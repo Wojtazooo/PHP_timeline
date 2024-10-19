@@ -5,9 +5,9 @@ body {
 }
 
 .events-container {
-    overflow-x: auto; /* Allows horizontal scrolling */
-    overflow-y: auto; /* Allows horizontal scrolling */
-    white-space: nowrap; /* Prevents line break */
+    overflow-x: auto; 
+    overflow-y: auto; 
+    white-space: nowrap;
 
     background-color: lightblue;
     width: 100%;
@@ -15,9 +15,13 @@ body {
     .grid {
         display: flex;
         align-items: stretch;
-        gap: 1rem;
+        gap: 0.5rem;
 
         .col { 
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
             flex-grow: 1;
             flex-basis: 0;
             min-width: 200px;

@@ -12,17 +12,17 @@ function random_color()
 
 <html>
 
-<head>
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+    </head>
 
     <body>
         <div class="events-container">
             <div class="grid">
                 <div class="timeline-col"> timeline </div>
                 <?php
-                $columns = 13;
-                $rows = 10;
+                $columns = 11;
+                $rows = 11;
                 for ($columnIndex = 1; $columnIndex <= $columns; $columnIndex++) { ?>
                     <div class="col">
                         
