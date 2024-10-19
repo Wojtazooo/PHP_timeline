@@ -1,0 +1,43 @@
+
+body {
+    display: flex;
+    flex-direction: row;
+}
+
+.events-container {
+    overflow-x: auto; /* Allows horizontal scrolling */
+    overflow-y: auto; /* Allows horizontal scrolling */
+    white-space: nowrap; /* Prevents line break */
+
+    background-color: lightblue;
+    width: 100%;
+
+    .grid {
+        display: flex;
+        align-items: stretch;
+        gap: 1rem;
+
+        .col { 
+            flex-grow: 1;
+            flex-basis: 0;
+            min-width: 200px;
+            background-color: lightgreen;
+
+            .event {
+                min-height: 100px;
+                border: 1px solid;
+            }
+        }
+
+        .timeline-col {
+            min-width: 100px;
+            background-color: lightcoral;
+        }
+    }
+
+    .event {
+        min-width: 200px;
+        /* background-color: red; */
+    }
+}
+
