@@ -13,6 +13,11 @@ class EventWithPosition
         $this->rowStartPosition = floor($startPosition);
         $this->rowEndPosition = floor($endPosition);
     }
+
+    public function getRowsLength()
+    {
+        return $this->rowEndPosition - $this->rowStartPosition;
+    }
 }
 
 function getEventsWithPositions(array $events, $numberOfRowsToDivideColumn): array
