@@ -5,7 +5,7 @@ $rows = 11;
 for ($columnIndex = 1; $columnIndex <= $columns; $columnIndex++) {
     $currentRow = 1;
 ?>
-    <div class="col" style="grid-template-rows: repeat(<?=$numberOfRowsToDivideColumn?>, 50px">
+    <div class="col" style="grid-template-rows: repeat(<?= $numberOfRowsToDivideColumn ?>, 10px">
 
         <?php
         for ($rowIndex = 1; $rowIndex <= $rows; $rowIndex++) {

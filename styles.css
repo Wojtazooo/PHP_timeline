@@ -1,12 +1,11 @@
-
 body {
     display: flex;
     flex-direction: row;
 }
 
 .events-container {
-    overflow-x: auto; 
-    overflow-y: auto; 
+    overflow-x: auto;
+    overflow-y: auto;
     white-space: nowrap;
 
     background-color: lightblue;
@@ -17,9 +16,8 @@ body {
         align-items: stretch;
         gap: 0.5rem;
 
-        .col { 
+        .col {
             display: grid;
-            flex-direction: column;
             gap: 0.5rem;
 
             flex-grow: 1;
@@ -28,12 +26,14 @@ body {
             background-color: lightgreen;
 
             .event {
-                min-height: 50px;
+                /* min-height: 0px; */
                 border: 1px solid;
             }
         }
 
         .timeline-col {
+            display: grid;
+
             min-width: 100px;
             background-color: lightcoral;
         }

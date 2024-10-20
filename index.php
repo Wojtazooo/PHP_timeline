@@ -83,6 +83,7 @@ $event7 = new Event(7, 'Film Premiere', strtotime('28-11-2024'), strtotime('28-1
 $event8 = new Event(8, 'Book Fair', strtotime('01-12-2024'), strtotime('03-12-2024'), 'Annual book fair event', 'bookfair.jpg', $category2->getId());
 $event9 = new Event(9, 'Marathon', strtotime('05-11-2024'), strtotime('05-11-2024'), 'City-wide marathon event', 'marathon.jpg', $category2->getId());
 $event10 = new Event(10, 'Football Match', strtotime('22-10-2024'), strtotime('22-10-2024'), 'Championship final', 'football.jpg', $category2->getId());
+$event10 = new Event(11, 'Football Match', strtotime('22-10-2024'), strtotime('22-10-2024'), 'Championship final', 'football.jpg', $category2->getId());
 
 
 $categories = [
@@ -103,7 +104,7 @@ $events = [
     $event10,
 ];
 
-$numberOfRowsToDivideColumn = 200;
+$numberOfRowsToDivideColumn = 100;
 ?>
 
 <html>
@@ -115,8 +116,13 @@ $numberOfRowsToDivideColumn = 200;
 <body>
     <div class="events-container">
         <div class="grid">
-            <div class="timeline-col">
+            <div class="timeline-col" style="grid-template-rows: repeat(<?= $numberOfRowsToDivideColumn ?>, 10px)">
                 <?php
+
+                class EventWithPosition
+                {
+                    public Event $event;
+                }
 
                 $startTimestamps = array_map(function (Event $event) {
                     // return strtotime($event->getStart()); 
@@ -128,15 +134,28 @@ $numberOfRowsToDivideColumn = 200;
                 }, $events);
 
                 sort($startTimestamps);
+                $firstTimestamp = reset($startTimestamps);
+                $lastTiestamp = end($startTimestamps);
+                $totalDifference = $lastTiestamp - $firstTimestamp;
+                $ticksPerRow = $totalDifference / $numberOfRowsToDivideColumn;
 
-                foreach ($startTimestamps as &$timestamp) {
-                    echo '<p>';
-                    echo date('d-m-Y', $timestamp);
-                    echo '</p>';
-                }
+                $timestampsWithRowPosition = array_map(function (int $timestamp) use ($firstTimestamp, $ticksPerRow) {
+                    $rowPosition = ($timestamp - $firstTimestamp) / $ticksPerRow;
+
+                    return [$timestamp, $rowPosition];
+                }, $startTimestamps);
                 ?>
+
+                <?php foreach ($timestampsWithRowPosition as $x):
+                    $timestamp = $x[0];
+                    $position = floor($x[1]);
+                ?>
+                    <div style="grid-row: <?= $position ?> / <?= $position ?>">
+                        <?= date('d-m-Y', $timestamp) ?>
+                    </div>
+                <?php endforeach; ?>
+
             </div>
-            <!-- <?php include 'grid-template-rows-demo.php' ?> -->
 
             <div class="col">
                 <?php foreach ($events as $event): ?>
