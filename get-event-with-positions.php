@@ -41,8 +41,8 @@ function getEventsWithPositions(array $events, $numberOfRowsToDivideColumn): arr
 
         $rowEndPosition = ($event->getEnd() - $firstTimestamp) / $ticksPerRow;
 
-        if ($rowEndPosition - $rowStartPosition < 10) {
-            $rowEndPosition = $rowStartPosition + 20;
+        if ($rowEndPosition - $rowStartPosition < 2) {
+            $rowEndPosition = $rowStartPosition + 2;
         }
 
         return new EventWithPosition($event, $rowStartPosition, $rowEndPosition);
