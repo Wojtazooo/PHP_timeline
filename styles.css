@@ -18,7 +18,7 @@ body {
         gap: 0.5rem;
 
         .col { 
-            display: flex;
+            display: grid;
             flex-direction: column;
             gap: 0.5rem;
 
@@ -28,7 +28,7 @@ body {
             background-color: lightgreen;
 
             .event {
-                min-height: 100px;
+                min-height: 50px;
                 border: 1px solid;
             }
         }
@@ -44,4 +44,3 @@ body {
         /* background-color: red; */
     }
 }
-
