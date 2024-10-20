@@ -1,7 +1,7 @@
-<div id="myModal" class="modal">
+<div id="eventDetailsModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <h2 id="modalTitle">Tytuł wydarzenia</h2>
+        <h2 id="modalTitle">Title to replace...</h2>
         <p>Started: <span id="start"> </span> </p>
         <p>Ended: <span id="end"> </span> </p>
         <p>Description: <span id="description"> </span> </p>
@@ -22,16 +22,16 @@
             $('#start').text(start);
             $('#end').text(end);
 
-            $('#myModal').fadeIn();
+            $('#eventDetailsModal').fadeIn();
         });
 
         $('.close').on('click', function () {
-            $('#myModal').fadeOut();
+            $('#eventDetailsModal').fadeOut();
         });
 
         $(window).on('click', function (event) {
-            if ($(event.target).is('#myModal')) {
-                $('#myModal').fadeOut();
+            if ($(event.target).is('#eventDetailsModal')) {
+                $('#eventDetailsModal').fadeOut();
             }
         });
     });

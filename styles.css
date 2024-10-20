@@ -1,6 +1,7 @@
 body {
     display: flex;
     flex-direction: row;
+    margin: 0px;
 }
 
 .events-container {
@@ -29,7 +30,7 @@ body {
                 background-color: lightgrey;
                 border: 1px solid;
                 padding: 0.5rem;
-                border-radius: 1rem;
+                border-radius: 0.5rem;
                 margin-right: 1rem;
                 text-overflow: ellipsis;
                 white-space: nowrap;
@@ -65,10 +66,7 @@ body {
 /* Style modal */
 .modal {
     display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
+    position: absolute;
     width: 100%;
     height: 100%;
     overflow: auto;
@@ -76,8 +74,9 @@ body {
 }
 
 .modal-content {
+    position: relative;
     background-color: #fff;
-    margin: 15% auto;
+    margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
@@ -98,4 +97,28 @@ body {
     color: red;
     text-decoration: none;
     cursor: pointer;
+}
+
+.loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    margin-left: -25px;
+    height: 50px;
+    margin-top: -25px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }

@@ -4,8 +4,8 @@
 <?php include 'get-event-with-positions.php' ?>
 
 <?php
-$numberOfRowsToDivideColumn = 55;
-$rowHeight = '1rem'
+$numberOfRowsToDivideColumn = 50;
+$rowHeight = '1fr'
 ?>
 
 <html>
@@ -16,7 +16,10 @@ $rowHeight = '1rem'
 </head>
 
 <body>
+    <?php include './modals/create/createModal.html' ?>
+    <?php include './modals/details/detailsModal.html' ?>
     <div class="events-container">
+        <?php include './modals/create/createModalButton.html' ?>
         <div class="grid">
             <div class="timeline-col" style="grid-template-rows: repeat(<?= $numberOfRowsToDivideColumn ?>, <?= $rowHeight ?>)">
                 <?php
@@ -48,18 +51,17 @@ $rowHeight = '1rem'
                             <span> <strong><?php echo $event->getTitle(); ?> </strong> (<?php echo $event->getStartFormatted(); ?> - <?php echo $event->getEndFormatted(); ?>)</span>
                         </div>
 
-                        <?php if ($eventWithPosition->getRowsLength() > 2): ?>
+                        <!-- <?php if ($eventWithPosition->getRowsLength() > 2): ?>
                             <div class="additional-info">
                                 <span>Description: <?php echo $event->getDescription(); ?></span>
                             </div>
-                        <?php endif; ?>
+                        <?php endif; ?> -->
 
                     </div>
                 <?php endforeach; ?>
             </div>
 
             <!-- Modal -->
-            <?php include 'modal.html' ?>
         </div>
     </div>
 </body>
