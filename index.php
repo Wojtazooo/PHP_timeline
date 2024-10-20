@@ -12,6 +12,7 @@ $rowHeight = '1rem'
 
 <head>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -35,7 +36,14 @@ $rowHeight = '1rem'
                 <?php foreach ($eventsWithPositions as $eventWithPosition):
                     $event = $eventWithPosition->event;
                 ?>
-                    <div class="event" style="grid-row: <?= $eventWithPosition->rowStartPosition ?> / <?= $eventWithPosition->rowEndPosition ?>">
+                    <div
+                        class="event"
+                        style="grid-row: <?= $eventWithPosition->rowStartPosition ?> / <?= $eventWithPosition->rowEndPosition ?>"
+                        data-id="<?= $event->getId() ?>"
+                        data-name="<?= $event->getTitle() ?>"
+                        data-description="<?= $event->getDescription() ?>"
+                        data-start="<?= $event->getStartFormatted() ?>"
+                        data-end="<?= $event->getEndFormatted() ?>">
                         <div class="main-info">
                             <span> <strong><?php echo $event->getTitle(); ?> </strong> (<?php echo $event->getStartFormatted(); ?> - <?php echo $event->getEndFormatted(); ?>)</span>
                         </div>
@@ -49,6 +57,9 @@ $rowHeight = '1rem'
                     </div>
                 <?php endforeach; ?>
             </div>
+
+            <!-- Modal -->
+            <?php include 'modal.html' ?>
         </div>
     </div>
 </body>

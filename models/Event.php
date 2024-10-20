@@ -20,6 +20,16 @@ class Event
         $this->categoryId = $categoryId;
     }
 
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
     public function getStart(): int
     {
         return $this->unixStart;
@@ -38,11 +48,6 @@ class Event
     public function getEndFormatted($format = 'd-m-Y'): string
     {
         return date($format, $this->unixEnd);
-    }
-
-    public function getTitle()
-    {
-        return $this->title;
     }
 
     public function getDescription()

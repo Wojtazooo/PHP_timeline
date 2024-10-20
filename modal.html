@@ -1,0 +1,38 @@
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modalTitle">Tytuł wydarzenia</h2>
+        <p>Started: <span id="start"> </span> </p>
+        <p>Ended: <span id="end"> </span> </p>
+        <p>Description: <span id="description"> </span> </p>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.event').on('click', function () {
+            var eventId = $(this).data('id');
+            var name = $(this).data('name');
+            var description = $(this).data('description');
+            var start = $(this).data('start');
+            var end = $(this).data('end');
+
+            $('#modalTitle').text(name);
+            $('#description').text(description);
+            $('#start').text(start);
+            $('#end').text(end);
+
+            $('#myModal').fadeIn();
+        });
+
+        $('.close').on('click', function () {
+            $('#myModal').fadeOut();
+        });
+
+        $(window).on('click', function (event) {
+            if ($(event.target).is('#myModal')) {
+                $('#myModal').fadeOut();
+            }
+        });
+    });
+</script>
