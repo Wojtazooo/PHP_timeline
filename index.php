@@ -73,7 +73,7 @@ class Category
 $category1 = new Category(1, 'Music', '#FF5733');
 $category2 = new Category(2, 'Sports', '#33FF57');
 
-$event1 = new Event(1, 'Concert', strtotime('20-10-2024'), strtotime('20-10-2024'), 'Live music event', 'concert.jpg', $category1->getId());
+$event1 = new Event(1, 'Concert', strtotime('20-10-2024'), strtotime('20-11-2024'), 'Live music event', 'concert.jpg', $category1->getId());
 $event2 = new Event(2, 'Art Exhibition', strtotime('25-10-2024'), strtotime('25-10-2024'), 'Contemporary art showcase', 'art.jpg', $category1->getId());
 $event3 = new Event(3, 'Tech Conference', strtotime('30-10-2024'), strtotime('31-10-2024'), 'Latest trends in technology', 'tech.jpg', $category2->getId());
 $event4 = new Event(4, 'Food Festival', strtotime('10-11-2024'),  strtotime('11-11-2024'), 'Celebration of local cuisine', 'foodfest.jpg', $category1->getId());
@@ -107,6 +107,8 @@ $events = [
 $numberOfRowsToDivideColumn = 100;
 ?>
 
+<?php include 'get-event-with-positions.php' ?>
+
 <html>
 
 <head>
@@ -118,48 +120,23 @@ $numberOfRowsToDivideColumn = 100;
         <div class="grid">
             <div class="timeline-col" style="grid-template-rows: repeat(<?= $numberOfRowsToDivideColumn ?>, 10px)">
                 <?php
-
-                class EventWithPosition
-                {
-                    public Event $event;
-                }
-
-                $startTimestamps = array_map(function (Event $event) {
-                    // return strtotime($event->getStart()); 
-                    return $event->getStart();
-                }, $events);
-
-                $endTimestamps = array_map(function (Event $event) {
-                    return $event->getEnd();
-                }, $events);
-
-                sort($startTimestamps);
-                $firstTimestamp = reset($startTimestamps);
-                $lastTiestamp = end($startTimestamps);
-                $totalDifference = $lastTiestamp - $firstTimestamp;
-                $ticksPerRow = $totalDifference / $numberOfRowsToDivideColumn;
-
-                $timestampsWithRowPosition = array_map(function (int $timestamp) use ($firstTimestamp, $ticksPerRow) {
-                    $rowPosition = ($timestamp - $firstTimestamp) / $ticksPerRow;
-
-                    return [$timestamp, $rowPosition];
-                }, $startTimestamps);
+                $eventsWithPositions = getEventsWithPositions($events, $numberOfRowsToDivideColumn);
                 ?>
 
-                <?php foreach ($timestampsWithRowPosition as $x):
-                    $timestamp = $x[0];
-                    $position = floor($x[1]);
+                <?php foreach ($eventsWithPositions as $eventWithPosition):
                 ?>
-                    <div style="grid-row: <?= $position ?> / <?= $position ?>">
-                        <?= date('d-m-Y', $timestamp) ?>
+                    <div style="grid-row: <?= $eventWithPosition->rowStartPosition ?> / <?= $eventWithPosition->rowStartPosition ?>">
+                        <?= date('d-m-Y', $eventWithPosition->event->getStart()) ?>
                     </div>
                 <?php endforeach; ?>
 
             </div>
 
-            <div class="col">
-                <?php foreach ($events as $event): ?>
-                    <div class="event">
+            <div class="col" style="grid-template-rows: repeat(<?= $numberOfRowsToDivideColumn ?>, 10px)">
+                <?php foreach ($eventsWithPositions as $eventWithPosition):
+                    $event = $eventWithPosition->event;
+                ?>
+                    <div class="event" style="grid-row: <?= $eventWithPosition->rowStartPosition ?> / <?= $eventWithPosition->rowEndPosition ?>">
                         <h2> <?php echo $event->getTitle(); ?></h2>
                         <p><strong>Date:</strong> <?php echo $event->getStartFormatted(); ?> - <?php echo $event->getEndFormatted(); ?></p>
                         <p><strong>Description:</strong> <?php echo $event->getDescription(); ?></p>
