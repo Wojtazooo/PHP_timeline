@@ -54,4 +54,14 @@ class Event
     {
         return $this->description;
     }
+
+    public function getPictureUrl()
+    {
+        return $this->picture;
+    }
+
+    public function getCategoryId()
+    {
+        return $this->categoryId;
+    }
 }

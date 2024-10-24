@@ -7,11 +7,11 @@
             <label for="eventTitle">Title:</label><br>
             <input type="text" id="eventTitle" name="eventTitle" required><br><br>
 
-            <label for="eventStart">Start Date (UNIX Timestamp):</label><br>
-            <input type="number" id="eventStart" name="eventStart" required><br><br>
+            <label for="eventStart">Start Date:</label><br>
+            <input type="text" id="eventStart" required><br><br>
 
-            <label for="eventEnd">End Date (UNIX Timestamp):</label><br>
-            <input type="number" id="eventEnd" name="eventEnd" required><br><br>
+            <label for="eventEnd">End Date:</label><br>
+            <input type="text" id="eventEnd" name="eventEnd" required><br><br>
 
             <label for="eventDescription">Description:</label><br>
             <textarea id="eventDescription" name="eventDescription" required></textarea><br><br>
@@ -29,6 +29,18 @@
 
 
 <script>
+    const datePickerSettings = {
+        dateFormat: "dd-mm-yy",
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "1900:2100"
+    };
+
+    $(document).ready(function () {
+        $("#eventStart").datepicker(datePickerSettings);
+        $("#eventEnd").datepicker(datePickerSettings);
+    });
+
     $('.close').on('click', function () {
         $('#createEventModal').fadeOut();
     });
@@ -55,8 +67,8 @@
             type: 'POST',
             data: {
                 title: title,
-                unixStart: start,
-                unixEnd: end,
+                start: start,
+                end: end,
                 description: description,
                 picture: picture,
                 categoryId: categoryId
