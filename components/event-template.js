@@ -53,12 +53,15 @@ function editButtonHandler(e) {
 
 function renderTimeline(eventsWithPositions) {
     $('#timeline-column').empty();
-    eventsWithPositions.forEach(eventWithPosition => {
+
+    const uniqueeventsWithPositions = new Map(eventsWithPositions.map(eventsWithPosition => [eventsWithPosition.event.start, eventsWithPosition.rowStartPosition]));
+
+    for (let [startTimestamp, rowPosition] of uniqueeventsWithPositions) {
         const timelineDiv =
-            `<div class="timeline-timestamp" style="grid-row: ${eventWithPosition.rowStartPosition} / ${eventWithPosition.rowStartPosition}">
-                                &#x2022;${eventWithPosition.event.start}
+            `<div class="timeline-timestamp" style="grid-row: ${rowPosition} / ${rowPosition}">
+                                &#x2022;${startTimestamp}
                             </div>`;
 
         $('#timeline-column').append(timelineDiv);
-    });
+    }
 }
