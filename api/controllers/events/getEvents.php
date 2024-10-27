@@ -1,5 +1,38 @@
-
 <?php
+
+include_once '../../utilitites.php';
+include_once '../../database/DatabaseConnection.php';
+include_once '../../models/Event.php';
+
+
+function getEvents()
+{
+    $mysqli = connectToDatabase();
+    $sqlQuery = "SELECT id, title, start, end, description, picture FROM events";
+
+    $result = $mysqli->query($sqlQuery);
+
+    if ($result->num_rows > 0) {
+        $results = $result->fetch_all(MYSQLI_ASSOC);
+
+        $resultsMappedToEvents = array_map(function ($result) {
+            $id = $result['id'];
+            $title = $result['title'];
+            $start = strtotime($result['start']);
+            $end = strtotime($result['end']);
+            $description = $result['description'];
+            $picture = $result['picture'];
+
+            // TODO: change it when implementing categories
+            $event = new Event($id, $title, $start, $end, $description, $picture, 1);
+            return $event;
+        }, $results);
+
+        return $resultsMappedToEvents;
+    } else {
+        return [];
+    }
+}
 
 class EventWithPosition
 {
@@ -20,6 +53,9 @@ class EventWithPosition
     }
 }
 
+/**
+ * @return EventWithposition[]
+ */
 function getEventsWithPositions(array $events, $numberOfRowsToDivideColumn): array
 {
     $startTimestamps = array_map(function (Event $event) {
@@ -56,5 +92,16 @@ function getEventsWithPositions(array $events, $numberOfRowsToDivideColumn): arr
     return  $timestampsWithRowPosition;
 }
 
+if (getRequestMethod() === 'GET') {
+    error_log('GET events endpoint');
 
-?>
+    try {
+        $result = getEventsWithPositions(getEvents(), 50);
+
+        send_response(200, 'Events fetched succesfully', $result);
+    } catch (Exception $e) {
+        send_response(500, 'Failed to get events.');
+    }
+} else {
+    send_response(500, 'Invalid http request.');
+}

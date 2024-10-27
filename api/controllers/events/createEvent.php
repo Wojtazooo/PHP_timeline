@@ -1,14 +1,12 @@
 <?php
 include_once '../../database/DatabaseConnection.php';
 include_once '../../models/Event.php';
-include_once '../utilitites.php';
+include_once '../../utilitites.php';
 
 function addEvent(string $title, string $start, string $end, string $description, string $picture, int $categoryId)
 {
     $mysqli = connectToDatabase();
     $sqlQuery = $mysqli->prepare("INSERT INTO events (title, start, end, description, picture, category_id) VALUES (?, ?, ?, ?, ?, ?)");
-
-    error_log('Start: ' . $start);
 
     // TODO: pass here $categoryId when categories will be implemented
     $xxx = 1;
@@ -45,14 +43,14 @@ if (getRequestMethod() === 'POST') {
     try {
         $result = addEvent($title, $start, $end, $description, $picture, $categoryId);
     } catch (Exception $e) {
-        send_response(['success' => false, 'message' => $e->getMessage()], 500);
+        send_response(500, $e->getMessage());
     }
 
     if ($result) {
-        send_response(['success' => true, 'message' => 'Event created successfully.'], 201);
+        send_response(201, 'Event created successfully.');
     } else {
-        send_response(['success' => false, 'message' => 'Failed to create event.'], 500);
+        send_response(500, 'Failed to create event.');
     }
 } else {
-    send_response(['success' => false, 'message' => 'Invalid http request.'], 500);
+    send_response(500, 'Invalid http request.');
 }

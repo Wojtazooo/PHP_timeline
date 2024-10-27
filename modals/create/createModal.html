@@ -62,29 +62,25 @@
         const picture = $('#eventPicture').val();
         const categoryId = $('#eventCategoryId').val();
 
-        $.ajax({
-            url: 'api/events/createEvent.php',
-            type: 'POST',
-            data: {
-                title: title,
-                start: start,
-                end: end,
-                description: description,
-                picture: picture,
-                categoryId: categoryId
-            },
-            success: function (response) {
-                console.log('Wydarzenie zapisane:', response);
-                alert('Wydarzenie zostało zapisane: ' + title);
-                $('#createEventForm')[0].reset();
-                $('#createEventModal').fadeOut();
-            },
-            error: function (xhr, status, error) {
-                alert(status + ': ' + error + ' - ' + xhr.responseText);
-            },
-            complete: function () {
-                $('#createEventModalSpinner').hide();
-            }
-        });
+        const data = {
+            title: title,
+            start: start,
+            end: end,
+            description: description,
+            picture: picture,
+            categoryId: categoryId
+        }
+
+        apiCreateEvent(data, (response) => {
+            console.log('Wydarzenie zapisane:', response);
+            alert('Wydarzenie zostało zapisane: ' + title);
+            $('#createEventForm')[0].reset();
+            $('#createEventModal').fadeOut();
+
+            refreshEvents();
+        },
+            $('#createEventModalSpinner').hide()
+        )
     });
+
 </script>

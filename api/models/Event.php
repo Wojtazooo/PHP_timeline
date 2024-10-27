@@ -1,5 +1,5 @@
 <?php
-class Event
+class Event implements JsonSerializable
 {
     private int $id;
     private string $title;
@@ -20,14 +20,21 @@ class Event
         $this->categoryId = $categoryId;
     }
 
-    public function getId(): int
+    public function jsonSerialize(): mixed
     {
-        return $this->id;
-    }
+        $serialized =
+            [
+                'id' => $this->id,
+                'title' => $this->title,
+                'start' => date('d-m-Y', $this->unixStart),
+                'end' => date('d-m-Y', $this->unixEnd),
+                'description' => $this->description,
+                'picture' => $this->picture,
+                'categoryId' => $this->categoryId
+            ];
+        error_log($serialized['start']);
 
-    public function getTitle(): string
-    {
-        return $this->title;
+        return $serialized;
     }
 
     public function getStart(): int
@@ -35,33 +42,8 @@ class Event
         return $this->unixStart;
     }
 
-    public function getStartFormatted($format = 'd-m-Y'): string
-    {
-        return date($format, $this->unixStart);
-    }
-
     public function getEnd(): int
     {
         return $this->unixEnd;
-    }
-
-    public function getEndFormatted($format = 'd-m-Y'): string
-    {
-        return date($format, $this->unixEnd);
-    }
-
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    public function getPictureUrl()
-    {
-        return $this->picture;
-    }
-
-    public function getCategoryId()
-    {
-        return $this->categoryId;
     }
 }

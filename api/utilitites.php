@@ -13,12 +13,38 @@ function getRequestMethod()
 /**
  * Send an API response
  * @param  *       $response The API response
- * @param  integer $code     The response code
- * @param  boolean $encode   If true, encode response
+ * @param  integer $httpCode     HTTP response code
+ * @param  boolean $responseMessage   If true, encode response
  */
-function send_response($response, $code)
+// function send_response($httpCode, $responseMessage)
+// {
+//     $success = false;
+//     if ($httpCode >= 200 && $httpCode < 300) {
+//         $success = true;
+//     }
+
+//     $response = ['success' => $success, 'message' => $responseMessage];
+
+//     http_response_code($httpCode);
+//     die(json_encode($response));
+// }
+
+/**
+ * Send an Json API response
+ * @param  *       $response The API response
+ * @param  integer $httpCode     HTTP response code
+ * @param  boolean $responseMessage   If true, encode response
+ */
+function send_response($httpCode, $responseMessage, $result = null)
 {
-    http_response_code($code);
+    $success = false;
+    if ($httpCode >= 200 && $httpCode < 300) {
+        $success = true;
+    }
+
+    $response = ['success' => $success, 'message' => $responseMessage, 'result' => $result];
+
+    http_response_code($httpCode);
     die(json_encode($response));
 }
 
