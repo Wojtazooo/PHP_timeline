@@ -7,32 +7,3 @@
         <p>Description: <span id="description"> </span> </p>
     </div>
 </div>
-
-<script>
-    $(document).ready(function () {
-        $('.event').on('click', function () {
-            var eventId = $(this).data('id');
-            var name = $(this).data('name');
-            var description = $(this).data('description');
-            var start = $(this).data('start');
-            var end = $(this).data('end');
-
-            $('#modalTitle').text(name);
-            $('#description').text(description);
-            $('#start').text(start);
-            $('#end').text(end);
-
-            $('#eventDetailsModal').fadeIn();
-        });
-
-        $('.close').on('click', function () {
-            $('#eventDetailsModal').fadeOut();
-        });
-
-        $(window).on('click', function (event) {
-            if ($(event.target).is('#eventDetailsModal')) {
-                $('#eventDetailsModal').fadeOut();
-            }
-        });
-    });
-</script>

@@ -22,13 +22,30 @@ function renderEvents(eventsWithPositions) {
         eventDiv.id = `event-${event.id}`;
         eventDiv.style = `grid-row: ${eventWithPosition.rowStartPosition} / ${eventWithPosition.rowEndPosition}`;
 
-        clone.querySelector('.title').textContent = event.title;
-        clone.querySelector('.start').textContent = `Start: ${event.start}`;
-        clone.querySelector('.end').textContent = `End: ${event.end}`;
-        clone.querySelector('.description').textContent = `Description: ${event.description}`;
+        eventDiv.querySelector('.title').textContent = event.title;
+        eventDiv.querySelector('.start').textContent = `Start: ${event.start}`;
+        eventDiv.querySelector('.end').textContent = `End: ${event.end}`;
+        eventDiv.querySelector('.description').textContent = `Description: ${event.description}`;
+
+        eventDiv.setAttribute('data-title', event.title);
+        eventDiv.setAttribute('data-start', event.start);
+        eventDiv.setAttribute('data-end', event.end);
+        eventDiv.setAttribute('data-description', event.description);
+
+        eventDiv.addEventListener("click", openDetailsModal);
+        eventDiv.querySelector('#edit-button').addEventListener('click', editButtonHandler);
+        eventDiv.querySelector('#delete-button').addEventListener('click', deleteButtonHandler);
 
         $('#events-column').append(eventDiv);
     });
+}
+
+function editButtonHandler(e) {
+    e.stopPropagation();
+}
+
+function deleteButtonHandler(e) {
+    e.stopPropagation();
 }
 
 function renderTimeline(eventsWithPositions) {
