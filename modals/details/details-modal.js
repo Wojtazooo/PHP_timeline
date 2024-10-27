@@ -17,9 +17,3 @@ function openDetailsModal() {
 $('.close').on('click', function () {
     $('#eventDetailsModal').fadeOut();
 });
-
-$(window).on('click', function (event) {
-    if ($(event.target).is('#eventDetailsModal')) {
-        $('#eventDetailsModal').fadeOut();
-    }
-});

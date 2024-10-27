@@ -29,3 +29,20 @@ function apiCreateEvent(data, successResponseCallback, completeCallback) {
         }
     });
 }
+
+function apiDeleteEvent(eventId, successResponseCallback, completeCallback) {
+    $.ajax({
+        url: 'api/controllers/events/deleteEvent.php',
+        type: 'DELETE',
+        data: { id: eventId },
+        success: function (response) {
+            successResponseCallback(response);
+        },
+        error: function (xhr, status, error) {
+            alert(status + ': ' + error + ' - ' + xhr.responseText);
+        },
+        complete: function () {
+            completeCallback();
+        }
+    });
+}

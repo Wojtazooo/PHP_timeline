@@ -33,18 +33,21 @@ function renderEvents(eventsWithPositions) {
         eventDiv.setAttribute('data-description', event.description);
 
         eventDiv.addEventListener("click", openDetailsModal);
-        eventDiv.querySelector('#edit-button').addEventListener('click', editButtonHandler);
-        eventDiv.querySelector('#delete-button').addEventListener('click', deleteButtonHandler);
+
+        const editButton = eventDiv.querySelector('#edit-button')
+        editButton.addEventListener('click', editButtonHandler);
+
+        const deleteButton = eventDiv.querySelector('#delete-button');
+        deleteButton.setAttribute('data-id', event.id);
+        deleteButton.setAttribute('data-title', event.title);
+        deleteButton.addEventListener('click', openDeleteModal);
+
 
         $('#events-column').append(eventDiv);
     });
 }
 
 function editButtonHandler(e) {
-    e.stopPropagation();
-}
-
-function deleteButtonHandler(e) {
     e.stopPropagation();
 }
 

@@ -12,9 +12,9 @@
 </head>
 
 <body>
-    <?php include './modals/create/createModal.html' ?>
+    <?php include './modals/create/create-modal.html' ?>
     <div class="events-container">
-        <?php include './modals/create/createModalButton.html' ?>
+        <?php include './modals/create/create-modal-button.html' ?>
 
         <div class="grid">
             <div id="timeline-column" class="timeline-col" style="grid-template-rows: repeat(50, 1rem)"></div>
@@ -22,12 +22,14 @@
             </div>
         </div>
     </div>
-    <?php include './modals/details/detailsModal.html' ?>
+    <?php include './modals/details/details-modal.html' ?>
+    <?php include './modals/delete/delete-modal.html' ?>
 </body>
 
 <!-- components scripts -->
 <script src=./components/event-template.js></script>
 <!-- Modals scripts -->
-<script src=./modals/details/detailsModal.js></script>
+<script src=./modals/details/details-modal.js></script>
+<script src=./modals/delete/delete-modal.js></script>
 
 </html>
