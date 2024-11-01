@@ -72,13 +72,19 @@ button {
     overflow-y: auto;
     white-space: nowrap;
 
-    background-color: lightblue;
     width: 100%;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     .grid {
+        border: solid 1px;
+        border-radius: 0.5rem;
         display: flex;
         align-items: stretch;
         gap: 0.5rem;
+        width: 90%;
 
         .col {
             display: grid;
@@ -86,7 +92,6 @@ button {
             flex-grow: 1;
             flex-basis: 0;
             min-width: 200px;
-            background-color: lightgreen;
 
             .event {
                 /* min-height: 0px; */
@@ -111,7 +116,8 @@ button {
             display: grid;
 
             min-width: 100px;
-            background-color: lightcoral;
+            background-color: whitesmoke;
+            border-radius: 0.5rem;
 
             .timeline-timestamp {
                 text-align: center;
