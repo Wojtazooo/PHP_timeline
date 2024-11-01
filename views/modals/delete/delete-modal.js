@@ -15,7 +15,7 @@ function openDeleteModal(e) {
     console.log($(this));
     console.log('open delete modal of title = ', title, ', id = ', eventId);
 
-    $('#deleteModalTitle').text(`Are you want to delete ${title}?`);
+    $('#deleteModalTitle').text(`Are you want to delete '${title}'?`);
     $('#deleteModal').fadeIn();
     $('#deleteYesButton').off();
     $('#deleteYesButton').on('click', (_) => handleDeleteConfimationClicked(eventId))

@@ -58,6 +58,10 @@ class EventWithPosition
  */
 function getEventsWithPositions(array $events, $numberOfRowsToDivideColumn): array
 {
+    if (count($events) == 0) {
+        return [];
+    }
+
     $startTimestamps = array_map(function (Event $event) {
         return $event->getStart();
     }, $events);

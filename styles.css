@@ -1,7 +1,70 @@
-body {
+body,
+button {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.events-panel {
     display: flex;
     flex-direction: row;
     margin: 0px;
+}
+
+#navigation-panel {
+    position: sticky;
+    top: 0;
+    display: flex;
+    border-radius: 0.2rem;
+    z-index: 99999;
+    background-color: white;
+
+    #home-nav {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+
+        a {
+            padding: 1rem;
+        }
+
+        button,
+        a.button {
+            border: 0px;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        #my-wallet-home-image {
+            width: 100%;
+        }
+    }
+
+    #actions-nav {
+        display: flex;
+        align-items: center;
+
+        div {
+            display: flex;
+            gap: 1rem;
+            padding: 0rem 1rem 0rem 1rem;
+            width: 100%;
+        }
+
+        button {
+            font-size: larger;
+        }
+    }
+
+    #profile-nav {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        flex: 10;
+        padding-right: 1rem;
+
+        button {
+            font-size: larger;
+        }
+    }
 }
 
 .events-container {

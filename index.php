@@ -1,35 +1,23 @@
-<html lang="en">
+<?php
 
-<head>
-    <title>Graphic Journal</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src=./api-client.js></script>
-    <!-- component templates -->
-    <?php include './components/event-template.html' ?>
-</head>
+$request = $_SERVER['REQUEST_URI'];
+$viewDir = '/views/';
 
-<body>
-    <?php include './modals/create/create-modal.html' ?>
-    <div class="events-container">
-        <?php include './modals/create/create-modal-button.html' ?>
+switch ($request) {
+    case '':
+    case '/':
+        require __DIR__ . $viewDir . 'home.php';
+        break;
 
-        <div class="grid">
-            <div id="timeline-column" class="timeline-col" style="grid-template-rows: repeat(50, 1rem)"></div>
-            <div id="events-column" class="col" style="grid-template-rows: repeat(50, 1rem)">
-            </div>
-        </div>
-    </div>
-    <?php include './modals/details/details-modal.html' ?>
-    <?php include './modals/delete/delete-modal.html' ?>
-</body>
+    case '/categories':
+        require __DIR__ . $viewDir . 'categories.php';
+        break;
 
-<!-- components scripts -->
-<script src=./components/event-template.js></script>
-<!-- Modals scripts -->
-<script src=./modals/details/details-modal.js></script>
-<script src=./modals/delete/delete-modal.js></script>
+    case '/login':
+        require __DIR__ . $viewDir . 'login.php';
+        break;
 
-</html>
+    default:
+        http_response_code(404);
+        require __DIR__ . $viewDir . '404.php';
+}
