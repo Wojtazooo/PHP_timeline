@@ -1,4 +1,4 @@
-
+// -------------- Events ------------------
 function apiGetEvents(successResponseCallback) {
     $.ajax({
         url: 'api/controllers/events/getEvents.php',
@@ -43,6 +43,21 @@ function apiDeleteEvent(eventId, successResponseCallback, completeCallback) {
         },
         complete: function () {
             completeCallback();
+        }
+    });
+}
+
+// -------------- Categories ------------------
+function apiGetCategories(successResponseCallback) {
+    $.ajax({
+        url: 'api/controllers/categories/getCategories.php',
+        type: 'GET',
+        dataType: 'json',
+        success: function (response) {
+            successResponseCallback(response);
+        },
+        error: function (xhr, status, error) {
+            alert(status + ': ' + error + ' - ' + xhr.responseText);
         }
     });
 }
