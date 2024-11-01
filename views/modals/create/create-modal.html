@@ -19,8 +19,9 @@
             <label for="eventPicture">Picture URL:</label><br>
             <input autocomplete="off" type="text" id="eventPicture" name="eventPicture" required><br><br>
 
-            <label for="eventCategoryId">Category ID:</label><br>
-            <input autocomplete="off" type="number" id="eventCategoryId" name="eventCategoryId" required><br><br>
+            <label for="categories-select">Category:</label><br>
+            <select name="categories" id="categories-select">
+            </select>
 
             <button type="submit" class="btn">Save</button>
         </form>
@@ -39,6 +40,29 @@
     $(document).ready(function () {
         $("#eventStart").datepicker(datePickerSettings);
         $("#eventEnd").datepicker(datePickerSettings);
+        apiGetCategories(response => {
+
+            const categories = response.result;
+
+            categories.forEach((category, index) => {
+                $("#categories-select").append(
+                    $('<option>', {
+                        value: category.id,
+                        text: category.name,
+                        css: { 'background-color': category.color }
+                    }));
+
+                if (index === 0) {
+                    $("#categories-select").css("background-color", category.color);
+                }
+            });
+
+        });
+
+        $('#categories-select').change(function () {
+            var selectedOptionColor = $(this).find(":selected").css("background-color");
+            $('#categories-select').css("background-color", selectedOptionColor)
+        });
     });
 
     $('.close').on('click', function () {
@@ -60,7 +84,7 @@
         const end = $('#eventEnd').val();
         const description = $('#eventDescription').val();
         const picture = $('#eventPicture').val();
-        const categoryId = $('#eventCategoryId').val();
+        const categoryId = $('#categories-select').val();
 
         const data = {
             title: title,

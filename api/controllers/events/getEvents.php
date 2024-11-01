@@ -8,7 +8,18 @@ include_once '../../models/Event.php';
 function getEvents()
 {
     $mysqli = connectToDatabase();
-    $sqlQuery = "SELECT id, title, start, end, description, picture FROM events";
+    $sqlQuery = "SELECT 
+        e.id, 
+        title, 
+        start, 
+        end, 
+        description, 
+        picture, 
+        c.id as 'categoryId', 
+        c.color as 'categoryColor',
+        c.name as 'categoryName'
+    FROM events e 
+    JOIN categories c on c.Id = e.category_id";
 
     $result = $mysqli->query($sqlQuery);
 
@@ -22,9 +33,12 @@ function getEvents()
             $end = strtotime($result['end']);
             $description = $result['description'];
             $picture = $result['picture'];
+            $categoryId = $result['categoryId'];
+            $categoryColor = $result['categoryColor'];
+            $categoryName = $result['categoryName'];
 
             // TODO: change it when implementing categories
-            $event = new Event($id, $title, $start, $end, $description, $picture, 1);
+            $event = new Event($id, $title, $start, $end, $description, $picture, $categoryId, $categoryColor, $categoryName);
             return $event;
         }, $results);
 

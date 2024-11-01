@@ -8,9 +8,6 @@ function addEvent(string $title, string $start, string $end, string $description
     $mysqli = connectToDatabase();
     $sqlQuery = $mysqli->prepare("INSERT INTO events (title, start, end, description, picture, category_id) VALUES (?, ?, ?, ?, ?, ?)");
 
-    // TODO: pass here $categoryId when categories will be implemented
-    $xxx = 1;
-
     $sqlQuery->bind_param(
         "sssssi",
         $title,
@@ -18,7 +15,7 @@ function addEvent(string $title, string $start, string $end, string $description
         $end,
         $description,
         $picture,
-        $xxx
+        $categoryId
     );
 
     if ($sqlQuery->execute()) {

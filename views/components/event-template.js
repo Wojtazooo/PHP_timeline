@@ -20,8 +20,8 @@ function renderEvents(eventsWithPositions) {
         const clone = eventTemplate.content.cloneNode(true);
         const eventDiv = clone.querySelector('.event');
         eventDiv.id = `event-${event.id}`;
-        eventDiv.style = `grid-row: ${eventWithPosition.rowStartPosition} / ${eventWithPosition.rowEndPosition}`;
 
+        eventDiv.style = `grid-row: ${eventWithPosition.rowStartPosition} / ${eventWithPosition.rowEndPosition}; background-color: ${event.categoryColor};`;
         eventDiv.querySelector('.title').textContent = event.title;
         eventDiv.querySelector('.start').textContent = `Start: ${event.start}`;
         eventDiv.querySelector('.end').textContent = `End: ${event.end}`;
