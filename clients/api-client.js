@@ -61,3 +61,20 @@ function apiGetCategories(successResponseCallback) {
         }
     });
 }
+
+function apiCreateCategory(data, successResponseCallback, completeCallback) {
+    $.ajax({
+        url: 'api/controllers/categories/createCategory.php',
+        type: 'POST',
+        data: data,
+        success: function (response) {
+            successResponseCallback(response)
+        },
+        error: function (xhr, status, error) {
+            alert(status + ': ' + error + ' - ' + xhr.responseText);
+        },
+        complete: function () {
+            completeCallback();
+        }
+    });
+}

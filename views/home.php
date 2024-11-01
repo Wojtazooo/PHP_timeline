@@ -5,12 +5,12 @@
 <body>
     <?php include  __DIR__ . '/components/event-template.html' ?>
     <?php include __DIR__ . '/components/navigation-panel.html' ?>
-    <?php include __DIR__ . '/modals/create/create-modal.html' ?>
-    <?php include __DIR__ . '/modals/delete/delete-modal.html' ?>
-    <?php include __DIR__ . '/modals/details/details-modal.html' ?>
+    <?php include __DIR__ . '/modals/events/create/create-modal.html' ?>
+    <?php include __DIR__ . '/modals/events/delete/delete-modal.html' ?>
+    <?php include __DIR__ . '/modals/events/details/details-modal.html' ?>
     <div class="events-panel">
         <div class="events-container">
-            <?php include  __DIR__ . '/modals/create/create-modal-button.html' ?>
+            <?php include  __DIR__ . '/modals/events/create/create-modal-button.html' ?>
 
             <div class="grid">
                 <div id="timeline-column" class="timeline-col" style="grid-template-rows: repeat(50, 1rem)"></div>
@@ -25,7 +25,7 @@
 <!-- components scripts -->
 <script src=views/components/event-template.js></script>
 <!-- Modals scripts -->
-<script src=views/modals/details/details-modal.js></script>
-<script src=views/modals/delete/delete-modal.js></script>
+<script src=views/modals/events/details/details-modal.js></script>
+<script src=views/modals/events/delete/delete-modal.js></script>
 
 </html>
