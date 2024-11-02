@@ -97,12 +97,32 @@ button {
                 /* min-height: 0px; */
                 background-color: lightgrey;
                 border: 1px solid;
-                padding: 0.5rem;
+                padding: 0.25rem;
                 border-radius: 0.5rem;
                 margin-right: 1rem;
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 overflow: hidden;
+
+                .event-header {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .event-title {
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+
+                    .buttons-container {}
+                }
+
+                img {
+                    margin-top: 0.5rem;
+                    min-width: 100%;
+                    max-width: 100%;
+                }
+
             }
 
             .event:hover {
@@ -136,7 +156,7 @@ button {
 .modal {
     display: none;
     position: absolute;
-    width: 100%;
+    width: 99%;
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.5);
@@ -152,6 +172,10 @@ button {
     max-width: 500px;
     border-radius: 5px;
     text-wrap: wrap;
+
+    img {
+        max-width: 500px;
+    }
 }
 
 .close {
@@ -220,4 +244,12 @@ button {
 .category-name {
     font-size: 1.1em;
     color: #555;
+}
+
+@media print {
+
+    #navigation-panel,
+    button {
+        display: none;
+    }
 }

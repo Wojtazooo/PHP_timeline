@@ -23,14 +23,15 @@ function renderEvents(eventsWithPositions) {
 
         eventDiv.style = `grid-row: ${eventWithPosition.rowStartPosition} / ${eventWithPosition.rowEndPosition}; background-color: ${event.categoryColor};`;
         eventDiv.querySelector('.title').textContent = event.title;
-        eventDiv.querySelector('.start').textContent = `Start: ${event.start}`;
-        eventDiv.querySelector('.end').textContent = `End: ${event.end}`;
-        eventDiv.querySelector('.description').textContent = `Description: ${event.description}`;
+        eventDiv.querySelector('.start').textContent = event.start;
+        eventDiv.querySelector('.end').textContent = event.end;
+        eventDiv.querySelector('#eventPicture').setAttribute('src', event.picture);
 
         eventDiv.setAttribute('data-title', event.title);
         eventDiv.setAttribute('data-start', event.start);
         eventDiv.setAttribute('data-end', event.end);
         eventDiv.setAttribute('data-description', event.description);
+        eventDiv.setAttribute('data-picture', event.picture);
 
         eventDiv.addEventListener("click", openDetailsModal);
 
