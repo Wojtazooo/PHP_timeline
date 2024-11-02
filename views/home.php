@@ -8,14 +8,13 @@
     <?php include __DIR__ . '/modals/events/delete/delete-modal.html' ?>
     <?php include __DIR__ . '/modals/events/details/details-modal.html' ?>
     <?php include __DIR__ . '/components/navigation-panel.html' ?>
-    <div class="events-panel">
-        <div class="events-container">
-            <?php include  __DIR__ . '/modals/events/create/create-modal-button.html' ?>
 
-            <div class="grid">
-                <div id="timeline-column" class="timeline-col" style="grid-template-rows: repeat(50, 1rem)"></div>
-                <div id="events-column" class="col" style="grid-template-rows: repeat(50, 1rem)">
-                </div>
+    <div class="page-content">
+        <?php include  __DIR__ . '/modals/events/create/create-modal-button.html' ?>
+
+        <div class="grid">
+            <div id="timeline-column" class="timeline-col" style="grid-template-rows: repeat(50, 1rem)"></div>
+            <div id="events-column" class="col" style="grid-template-rows: repeat(50, 1rem)">
             </div>
         </div>
     </div>

@@ -35,8 +35,6 @@ if (getRequestMethod() === 'POST') {
     $picture = $_POST['picture'];
     $categoryId = (int)$_POST['categoryId'];
 
-    error_log('Start: ' . $start);
-
     try {
         $result = addEvent($title, $start, $end, $description, $picture, $categoryId);
     } catch (Exception $e) {

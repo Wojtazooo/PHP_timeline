@@ -17,12 +17,11 @@ function deleteEvent(int $eventId)
 }
 
 if (getRequestMethod() === 'DELETE') {
-    // Retrieve the raw input data from the DELETE request
+    auth_user();
+
     parse_str(file_get_contents("php://input"), $_DELETE);
     $eventId = (int)$_DELETE['id'];
 
-    error_log(`deletion of $eventId`);
-    error_log($eventId);
     try {
         $result = deleteEvent($eventId);
     } catch (Exception $e) {

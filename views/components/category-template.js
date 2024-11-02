@@ -10,11 +10,9 @@ function refreshCategories() {
 
 function renderCategories(categories) {
     $('#category-list').empty();
-    console.log(categories);
 
     const categoryTemplate = document.getElementById("category-template");
     categories.forEach(category => {
-        console.log(category);
         const clone = categoryTemplate.content.cloneNode(true);
 
         clone.querySelector('.category-name').textContent = category.name;

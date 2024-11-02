@@ -11,7 +11,6 @@ function refreshEvents() {
 
 function renderEvents(eventsWithPositions) {
     $('#events-column').empty();
-    console.log(eventsWithPositions);
 
     const eventTemplate = document.getElementById("event-template");
     eventsWithPositions.forEach(eventWithPosition => {

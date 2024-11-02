@@ -8,7 +8,7 @@ function apiGetEvents(successResponseCallback) {
             successResponseCallback(response);
         },
         error: function (xhr, status, error) {
-            alert(status + ': ' + error + ' - ' + xhr.responseText);
+            showToastForApiError(xhr);
         }
     });
 }
@@ -22,7 +22,7 @@ function apiCreateEvent(data, successResponseCallback, completeCallback) {
             successResponseCallback(response)
         },
         error: function (xhr, status, error) {
-            alert(status + ': ' + error + ' - ' + xhr.responseText);
+            showToastForApiError(xhr);
         },
         complete: function () {
             completeCallback();
@@ -39,7 +39,7 @@ function apiDeleteEvent(eventId, successResponseCallback, completeCallback) {
             successResponseCallback(response);
         },
         error: function (xhr, status, error) {
-            alert(status + ': ' + error + ' - ' + xhr.responseText);
+            showToastForApiError(xhr);
         },
         complete: function () {
             completeCallback();
@@ -57,7 +57,7 @@ function apiGetCategories(successResponseCallback) {
             successResponseCallback(response);
         },
         error: function (xhr, status, error) {
-            alert(status + ': ' + error + ' - ' + xhr.responseText);
+            showToastForApiError(xhr);
         }
     });
 }
@@ -71,7 +71,42 @@ function apiCreateCategory(data, successResponseCallback, completeCallback) {
             successResponseCallback(response)
         },
         error: function (xhr, status, error) {
-            alert(status + ': ' + error + ' - ' + xhr.responseText);
+            showToastForApiError(xhr);
+        },
+        complete: function () {
+            completeCallback();
+        }
+    });
+}
+
+// -------------- Users ------------------ 
+function apiLogin(data, successResponseCallback, completeCallback) {
+    $.ajax({
+        url: 'api/controllers/users/login.php',
+        type: 'POST',
+        data: data,
+        success: function (response) {
+            successResponseCallback(response)
+        },
+        error: function (xhr, status, error) {
+            showToastForApiError(xhr);
+        },
+        complete: function () {
+            completeCallback();
+        }
+    });
+}
+
+function apiRegister(data, successResponseCallback, completeCallback) {
+    $.ajax({
+        url: 'api/controllers/users/register.php',
+        type: 'POST',
+        data: data,
+        success: function (response) {
+            successResponseCallback(response)
+        },
+        error: function (xhr, status, error) {
+            showToastForApiError(xhr);
         },
         complete: function () {
             completeCallback();

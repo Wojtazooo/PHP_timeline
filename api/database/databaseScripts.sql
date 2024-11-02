@@ -23,4 +23,9 @@ CREATE TABLE events (
     FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE SET NULL
 );
 
-SELECT * FROM eventsdb.events
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

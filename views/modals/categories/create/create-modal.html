@@ -3,11 +3,13 @@
         <span class="close">&times;</span>
         <h2>Add new category</h2>
         <form id="createCategoryForm">
-            <label for="categoryName">Name:</label><br>
-            <input autocomplete="off" type="text" id="categoryName" name="categoryName" required><br><br>
+            <label for="categoryName">Name:</label>
+            <input autocomplete="off" type="text" id="categoryName" name="categoryName" required>
+            <br>
 
-            <label for="categoryName">Color:</label><br>
-            <input autocomplete="off" type="color" id="categoryColor" name="categoryColor"><br><br>
+            <label for="categoryName">Color:</label>
+            <input autocomplete="off" type="color" id="categoryColor" name="categoryColor">
+            <br>
 
             <button type="submit" class="btn">Save</button>
         </form>
@@ -38,12 +40,10 @@
             color
         };
 
-        console.log(data);
-
         apiCreateCategory(data, (response) => {
-            console.log('Kategoria dodana', response);
             $('#createCategoryModal').fadeOut();
 
+            showToastForSuccessResponse(response);
             refreshCategories();
         })
     });

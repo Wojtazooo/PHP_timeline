@@ -4,24 +4,30 @@
         <span class="close">&times;</span>
         <h2>Add new event</h2>
         <form id="createEventForm">
-            <label for="eventTitle">Title:</label><br>
-            <input autocomplete="off" type="text" id="eventTitle" name="eventTitle" required><br><br>
+            <label for="eventTitle">Title:</label>
+            <input autocomplete="off" type="text" id="eventTitle" name="eventTitle" required>
+            <br>
 
-            <label for="eventStart">Start Date:</label><br>
-            <input autocomplete="off" type="text" id="eventStart" required><br><br>
+            <label for="eventStart">Start Date:</label>
+            <input autocomplete="off" type="text" id="eventStart" required>
+            <br>
 
-            <label for="eventEnd">End Date:</label><br>
-            <input autocomplete="off" type="text" id="eventEnd" name="eventEnd" required><br><br>
+            <label for="eventEnd">End Date:</label>
+            <input autocomplete="off" type="text" id="eventEnd" name="eventEnd" required>
+            <br>
 
-            <label for="eventDescription">Description:</label><br>
-            <textarea id="eventDescription" name="eventDescription" required></textarea><br><br>
+            <label for="eventDescription">Description:</label>
+            <textarea id="eventDescription" name="eventDescription" required></textarea>
+            <br>
 
-            <label for="eventPicture">Picture URL:</label><br>
-            <input autocomplete="off" type="text" id="eventPicture" name="eventPicture" required><br><br>
+            <label for="eventPicture">Picture URL:</label>
+            <input autocomplete="off" type="text" id="eventPicture" name="eventPicture" required>
+            <br>
 
-            <label for="categories-select">Category:</label><br>
+            <label for="categories-select">Category:</label>
             <select name="categories" id="categories-select">
             </select>
+            <br>
 
             <button type="submit" class="btn">Save</button>
         </form>
@@ -96,13 +102,13 @@
         }
 
         apiCreateEvent(data, (response) => {
-            console.log('Wydarzenie zapisane:', response);
             $('#createEventForm')[0].reset();
             $('#createEventModal').fadeOut();
 
+            showToastForSuccessResponse(response);
             refreshEvents();
         },
-            $('#createEventModalSpinner').hide()
+            () => $('#createEventModalSpinner').hide()
         )
     });
 

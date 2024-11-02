@@ -12,9 +12,6 @@ function openDeleteModal(e) {
     var eventId = $(this).data('id');
     var title = $(this).data('title');
 
-    console.log($(this));
-    console.log('open delete modal of title = ', title, ', id = ', eventId);
-
     $('#deleteModalTitle').text(`Are you want to delete '${title}'?`);
     $('#deleteModal').fadeIn();
     $('#deleteYesButton').off();
@@ -22,10 +19,10 @@ function openDeleteModal(e) {
 }
 
 function handleDeleteConfimationClicked(eventId) {
-    console.log('deletion of ', eventId, ' confirmed');
-    apiDeleteEvent(eventId, () => refreshEvents(), () => { $('#deleteModal').fadeOut() });
-    ;
-
+    apiDeleteEvent(eventId, (response) => {
+        showToastForSuccessResponse(response);
+        refreshEvents();
+    }, () => { $('#deleteModal').fadeOut() });
 }
 
 

@@ -56,3 +56,16 @@ function get_request_data()
 {
     return array_merge(empty($_POST) ? array() : $_POST, (array) json_decode(file_get_contents('php://input'), true), $_GET);
 }
+
+
+/**
+ * @return Object
+ */
+function auth_user()
+{
+    session_start();
+
+    if (!isset($_SESSION['user_id'])) {
+        send_response(401, 'Unauthorized - log in or register to perform this operation.');
+    }
+}

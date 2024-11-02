@@ -111,8 +111,6 @@ function getEventsWithPositions(array $events, $numberOfRowsToDivideColumn): arr
 }
 
 if (getRequestMethod() === 'GET') {
-    error_log('GET events endpoint');
-
     try {
         $result = getEventsWithPositions(getEvents(), 50);
 

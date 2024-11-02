@@ -47,7 +47,6 @@ class Event implements JsonSerializable
                 'categoryName' => $this->categoryName,
                 'categoryColor' => $this->categoryColor
             ];
-        error_log($serialized['start']);
 
         return $serialized;
     }

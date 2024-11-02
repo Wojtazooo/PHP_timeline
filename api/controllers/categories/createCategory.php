@@ -8,8 +8,6 @@ function addCategory(string $name, string $color)
     $mysqli = connectToDatabase();
     $sqlQuery = $mysqli->prepare("INSERT INTO categories (name, color) VALUES (?, ?)");
 
-    error_log($color);
-
     $sqlQuery->bind_param(
         "ss",
         $name,

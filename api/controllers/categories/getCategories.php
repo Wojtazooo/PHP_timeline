@@ -21,8 +21,6 @@ function getCategories()
 }
 
 if (getRequestMethod() === 'GET') {
-    error_log('GET categories endpoint');
-
     try {
         $result = getCategories();
 
