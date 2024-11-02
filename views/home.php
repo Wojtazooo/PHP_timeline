@@ -23,6 +23,7 @@
 
 <!-- components scripts -->
 <script src=views/components/event-template.js></script>
+<script src=views/components/navigation-panel.js></script>
 <!-- Modals scripts -->
 <script src=views/modals/events/details/details-modal.js></script>
 <script src=views/modals/events/delete/delete-modal.js></script>

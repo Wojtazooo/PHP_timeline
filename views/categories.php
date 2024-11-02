@@ -13,3 +13,4 @@
 </body>
 
 <script src=views/components/category-template.js></script>
+<script src=views/components/navigation-panel.js></script>

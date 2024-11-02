@@ -30,7 +30,7 @@
 
 </body>
 
-
+<script src=views/components/navigation-panel.js></script>
 <script>
     $('#registerForm').submit(function(e) {
         e.preventDefault();

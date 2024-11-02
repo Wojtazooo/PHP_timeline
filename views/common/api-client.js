@@ -113,3 +113,19 @@ function apiRegister(data, successResponseCallback, completeCallback) {
         }
     });
 }
+
+function apiCheckSesion(successResponseCallback, completeCallback) {
+    $.ajax({
+        url: 'api/controllers/users/session_check.php',
+        type: 'GET',
+        success: function (response) {
+            successResponseCallback(response)
+        },
+        error: function (xhr, status, error) {
+            showToastForApiError(xhr);
+        },
+        complete: function () {
+            completeCallback();
+        }
+    });
+}
