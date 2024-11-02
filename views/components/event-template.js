@@ -32,6 +32,8 @@ function renderEvents(eventsWithPositions) {
         eventDiv.setAttribute('data-end', event.end);
         eventDiv.setAttribute('data-description', event.description);
         eventDiv.setAttribute('data-picture', event.picture);
+        eventDiv.setAttribute('data-categoryName', event.categoryName);
+        eventDiv.setAttribute('data-categoryColor', event.categoryColor);
 
         eventDiv.addEventListener("click", openDetailsModal);
 

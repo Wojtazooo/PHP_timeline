@@ -4,10 +4,10 @@
 
 <body>
     <?php include  __DIR__ . '/components/event-template.html' ?>
-    <?php include __DIR__ . '/components/navigation-panel.html' ?>
     <?php include __DIR__ . '/modals/events/create/create-modal.html' ?>
     <?php include __DIR__ . '/modals/events/delete/delete-modal.html' ?>
     <?php include __DIR__ . '/modals/events/details/details-modal.html' ?>
+    <?php include __DIR__ . '/components/navigation-panel.html' ?>
     <div class="events-panel">
         <div class="events-container">
             <?php include  __DIR__ . '/modals/events/create/create-modal-button.html' ?>
