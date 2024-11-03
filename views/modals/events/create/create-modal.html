@@ -75,12 +75,6 @@
         $('#createEventModal').fadeOut();
     });
 
-    $(window).on('click', function (event) {
-        if ($(event.target).is('#createEventModal')) {
-            $('#createEventModal').fadeOut();
-        }
-    });
-
     $('#createEventForm').on('submit', function (e) {
         e.preventDefault();
         $('#createEventModalSpinner').show();

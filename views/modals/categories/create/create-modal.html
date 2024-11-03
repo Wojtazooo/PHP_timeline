@@ -22,12 +22,6 @@
         $('#createCategoryModal').fadeOut();
     });
 
-    $(window).on('click', function (event) {
-        if ($(event.target).is('#createCategoryModal')) {
-            $('#createCategoryModal').fadeOut();
-        }
-    });
-
     $('#createCategoryForm').on('submit', function (e) {
         e.preventDefault();
 

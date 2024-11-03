@@ -306,6 +306,7 @@ a.button:visited {
 
     .details {
         display: flex;
+        overflow: hidden;
     }
 
     .action-buttons {

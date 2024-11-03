@@ -79,6 +79,23 @@ function apiCreateCategory(data, successResponseCallback, completeCallback) {
     });
 }
 
+function apiDeleteCategory(categoryId, successResponseCallback, completeCallback) {
+    $.ajax({
+        url: 'api/controllers/categories/deleteCategory.php',
+        type: 'DELETE',
+        data: { id: categoryId },
+        success: function (response) {
+            successResponseCallback(response);
+        },
+        error: function (xhr, status, error) {
+            showToastForApiError(xhr);
+        },
+        complete: function () {
+            completeCallback();
+        }
+    });
+}
+
 // -------------- Users ------------------ 
 function apiLogin(data, successResponseCallback, completeCallback) {
     $.ajax({
