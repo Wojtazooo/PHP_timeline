@@ -1,0 +1,52 @@
+<div id="editCategoryModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Edit category</h2>
+        <form id="editCategoryForm">
+            <label for="editCategoryName">Name:</label>
+            <input autocomplete="off" type="text" id="editCategoryName" name="categoryName" required>
+            <br>
+
+            <label for="editCategoryColor">Color:</label>
+            <input autocomplete="off" type="color" id="editCategoryColor" name="categoryColor">
+            <br>
+
+            <button type="submit" class="btn">Save</button>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    categoryIdToUpdate = undefined;
+
+    $('.close').on('click', function () {
+        $('#editCategoryModal').fadeOut();
+    });
+
+    $('#editCategoryForm').on('submit', function (e) {
+        e.preventDefault();
+
+        const name = $('#editCategoryName').val();
+        const color = $('#editCategoryColor').val();
+
+        const data = {
+            id: categoryIdToUpdate,
+            name: name,
+            color: color
+        }
+        apiUpdateCategory(data, (response) => {
+            showToastForSuccessResponse(response);
+            $('#editCategoryModal').fadeOut();
+            refreshCategories();
+        })
+    });
+
+    function openEditCategoryModal(categoryId, categoryName, categoryColor) {
+        categoryIdToUpdate = categoryId;
+        $('#editCategoryModal').fadeIn();
+        $('#editCategoryName').val(categoryName);
+        $('#editCategoryColor').val(categoryColor);
+    }
+
+</script>

@@ -24,15 +24,28 @@ function renderCategories(categories) {
         deleteButton.setAttribute('data-id', category.id);
         deleteButton.addEventListener('click', deleteButtonHandler);
 
+        const editButton = clone.querySelector('#edit-button')
+        editButton.setAttribute('data-id', category.id);
+        editButton.setAttribute('data-name', category.name);
+        editButton.setAttribute('data-color', category.color);
+        editButton.addEventListener('click', editButtonHandler);
+
         $('#category-list').append(clone);
     });
 }
 
 function deleteButtonHandler() {
     var categoryId = $(this).data('id');
-    console.log('delete', categoryId);
     apiDeleteCategory(categoryId, (response) => {
         showToastForSuccessResponse(response);
         refreshCategories();
     }, () => { })
+}
+
+function editButtonHandler() {
+    var categoryId = $(this).data('id');
+    var categoryName = $(this).data('name');
+    var categoryColor = $(this).data('color');
+
+    openEditCategoryModal(categoryId, categoryName, categoryColor);
 }

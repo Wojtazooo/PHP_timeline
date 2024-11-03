@@ -3,6 +3,7 @@
 <body>
     <?php include __DIR__ . '/components/category-template.html' ?>
     <?php include __DIR__ . '/modals/categories/create/create-modal.html' ?>
+    <?php include __DIR__ . '/modals/categories/edit/edit-modal.html' ?>
     <?php include __DIR__ . '/common/navigation-panel.html' ?>
 
     <div class="page-content">
