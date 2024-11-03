@@ -203,6 +203,7 @@ a.button:visited {
     position: relative;
     background-color: #fff;
     margin: 5% auto;
+    margin-top: 100px;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
@@ -223,7 +224,7 @@ a.button:visited {
         flex-direction: column;
 
         textarea {
-            height: 200px;
+            height: 100px;
         }
     }
 }
