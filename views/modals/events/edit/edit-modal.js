@@ -10,7 +10,7 @@ $(document).ready(function () {
         yearRange: "1900:2100"
     };
 
-    modal.find("#eventStart").datepicker(datePickerSettings);
+    modal.find("#editEventStart").datepicker(datePickerSettings);
     modal.find("#editEventEnd").datepicker(datePickerSettings);
 
     apiGetCategories(response => {
