@@ -47,6 +47,23 @@ function apiDeleteEvent(eventId, successResponseCallback, completeCallback) {
     });
 }
 
+function apiUpdateEvent(data, successResponseCallback, completeCallback) {
+    $.ajax({
+        url: 'api/controllers/events/updateEvent.php',
+        type: 'PUT',
+        data: data,
+        success: function (response) {
+            successResponseCallback(response);
+        },
+        error: function (xhr, status, error) {
+            showToastForApiError(xhr);
+        },
+        complete: function () {
+            completeCallback();
+        }
+    });
+}
+
 // -------------- Categories ------------------
 function apiGetCategories(successResponseCallback) {
     $.ajax({

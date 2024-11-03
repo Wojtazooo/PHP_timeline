@@ -9,12 +9,18 @@ function refreshEvents() {
     })
 }
 
+events = [];
+
 function renderEvents(eventsWithPositions) {
     $('#events-column').empty();
 
     const eventTemplate = document.getElementById("event-template");
+
+    events = [];
+
     eventsWithPositions.forEach(eventWithPosition => {
         event = eventWithPosition.event;
+        events.push(event);
 
         const clone = eventTemplate.content.cloneNode(true);
         const eventDiv = clone.querySelector('.event');
@@ -37,7 +43,8 @@ function renderEvents(eventsWithPositions) {
         eventDiv.addEventListener("click", openDetailsModal);
 
         const editButton = eventDiv.querySelector('#edit-button')
-        editButton.addEventListener('click', editButtonHandler);
+        editButton.setAttribute('data-id', event.id);
+        editButton.addEventListener('click', openEditEventDetailsModal);
 
         const deleteButton = eventDiv.querySelector('#delete-button');
         deleteButton.setAttribute('data-id', event.id);
@@ -47,10 +54,6 @@ function renderEvents(eventsWithPositions) {
 
         $('#events-column').append(eventDiv);
     });
-}
-
-function editButtonHandler(e) {
-    e.stopPropagation();
 }
 
 function renderTimeline(eventsWithPositions) {

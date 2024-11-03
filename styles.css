@@ -126,14 +126,13 @@ a.button:visited {
         display: flex;
         align-items: stretch;
         gap: 0.5rem;
-        width: 90%;
+        margin: 0.5rem;
 
         .col {
             display: grid;
 
             flex-grow: 1;
             flex-basis: 0;
-            min-width: 200px;
 
             .event {
                 /* min-height: 0px; */
@@ -177,7 +176,8 @@ a.button:visited {
         .timeline-col {
             display: grid;
 
-            min-width: 100px;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
             background-color: whitesmoke;
             border-radius: 0.5rem;
 
@@ -186,11 +186,6 @@ a.button:visited {
                 font-weight: bold;
             }
         }
-    }
-
-    .event {
-        min-width: 200px;
-        /* background-color: red; */
     }
 }
 

@@ -1,0 +1,34 @@
+<div id="editEventDetailsModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Edit event</h2>
+        <form id="editEventForm">
+            <label for="editEventTitle">Title:</label>
+            <input autocomplete="off" type="text" id="editEventTitle" name="editEventTitle" required>
+            <br>
+
+            <label for="editEventStart">Start Date:</label>
+            <input autocomplete="off" type="text" id="editEventStart" required>
+            <br>
+
+            <label for="editEventEnd">End Date:</label>
+            <input autocomplete="off" type="text" id="editEventEnd" name="editEventEnd" required>
+            <br>
+
+            <label for="editEventDescription">Description:</label>
+            <textarea id="editEventDescription" name="editEventDescription" required></textarea>
+            <br>
+
+            <label for="editEventPicture">Picture URL:</label>
+            <input autocomplete="off" type="text" id="editEventPicture" name="editEventPicture" required>
+            <br>
+
+            <label for="editCategoriesSelect">event:</label>
+            <select name="categories" id="editCategoriesSelect">
+            </select>
+            <br>
+
+            <button type="submit" class="btn">Save</button>
+        </form>
+    </div>
+</div>

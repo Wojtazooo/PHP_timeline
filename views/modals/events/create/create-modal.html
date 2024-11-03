@@ -36,14 +36,16 @@
 
 
 <script>
-    const datePickerSettings = {
-        dateFormat: "dd-mm-yy",
-        changeMonth: true,
-        changeYear: true,
-        yearRange: "1900:2100"
-    };
+
 
     $(document).ready(function () {
+        const datePickerSettings = {
+            dateFormat: "dd-mm-yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "1900:2100"
+        };
+
         $("#eventStart").datepicker(datePickerSettings);
         $("#eventEnd").datepicker(datePickerSettings);
         apiGetCategories(response => {
