@@ -62,7 +62,7 @@ if (getRequestMethod() === 'DELETE') {
         }
 
         $result = deleteCategory($mysqli, $categoryId);
-    } catch (Exception $e) {
+    } catch (Throwable $e) {
         send_response(500, $e->getMessage());
     }
 

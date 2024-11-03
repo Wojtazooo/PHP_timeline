@@ -57,8 +57,8 @@ class EventWithPosition
     public function __construct(Event $event, float $startPosition, float $endPosition)
     {
         $this->event = $event;
-        $this->rowStartPosition = floor($startPosition);
-        $this->rowEndPosition = floor($endPosition);
+        $this->rowStartPosition = floor($startPosition) + 1;
+        $this->rowEndPosition = floor($endPosition) + 1;
     }
 
     public function getRowsLength()
@@ -115,7 +115,7 @@ if (getRequestMethod() === 'GET') {
         $result = getEventsWithPositions(getEvents(), 50);
 
         send_response(200, 'Events fetched succesfully', $result);
-    } catch (Exception $e) {
+    } catch (Throwable $e) {
         send_response(500, 'Failed to get events.');
     }
 } else {

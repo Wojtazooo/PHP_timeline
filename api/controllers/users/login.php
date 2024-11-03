@@ -26,12 +26,14 @@ function loginUser(string $username, string $password)
 
 if (getRequestMethod() === 'POST') {
     session_start();
-    $username = $_POST['username'];
-    $password = $_POST['password'];
 
     try {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+
         $result = loginUser($username, $password);
-    } catch (Exception $e) {
+    } catch (Throwable $e) {
         send_response(500, $e->getMessage());
     }
 

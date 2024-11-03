@@ -21,11 +21,11 @@ function getUser(int $userId)
 
 if (getRequestMethod() === 'GET') {
     session_start();
-    $userId = $_GET['userId'];
 
     try {
+        $userId = $_GET['userId'];
         $result = getUser($userId);
-    } catch (Exception $e) {
+    } catch (Throwable $e) {
         send_response(500, $e->getMessage());
     }
 

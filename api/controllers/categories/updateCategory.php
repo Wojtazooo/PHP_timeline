@@ -67,7 +67,7 @@ if (getRequestMethod() === 'PUT') {
         }
 
         $result = updateCategory($mysqli, $categoryId, $categoryName, $categoryColor);
-    } catch (Exception $e) {
+    } catch (Throwable $e) {
         send_response(500, $e->getMessage());
     }
 

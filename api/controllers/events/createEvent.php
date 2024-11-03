@@ -28,18 +28,18 @@ function addEvent(string $title, string $start, string $end, string $description
 if (getRequestMethod() === 'POST') {
     auth_user();
 
-    $title = $_POST['title'];
-    $startDateString = $_POST['start'];
-    $start = DateTime::createFromFormat('d-m-Y', $startDateString)->format('Y-m-d') . ' 00:00:00';
-    $endDateString = $_POST['end'];
-    $end = DateTime::createFromFormat('d-m-Y', $endDateString)->format('Y-m-d') . ' 00:00:00';
-    $description = $_POST['description'];
-    $picture = $_POST['picture'];
-    $categoryId = (int)$_POST['categoryId'];
-
     try {
+        $title = $_POST['title'];
+        $startDateString = $_POST['start'];
+        $start = DateTime::createFromFormat('d-m-Y', $startDateString)->format('Y-m-d') . ' 00:00:00';
+        $endDateString = $_POST['end'];
+        $end = DateTime::createFromFormat('d-m-Y', $endDateString)->format('Y-m-d') . ' 00:00:00';
+        $description = $_POST['description'];
+        $picture = $_POST['picture'];
+        $categoryId = (int)$_POST['categoryId'];
+
         $result = addEvent($title, $start, $end, $description, $picture, $categoryId);
-    } catch (Exception $e) {
+    } catch (Throwable $e) {
         send_response(500, $e->getMessage());
     }
 

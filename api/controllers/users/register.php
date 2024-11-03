@@ -39,18 +39,19 @@ function doesUserAlreadyExist(mysqli $mysqli, string $username)
 
 if (getRequestMethod() === 'POST') {
     session_start();
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
     try {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
         $mysqli = connectToDatabase();
+
         if (doesUserAlreadyExist($mysqli, $username)) {
             send_response(400, 'User with given username already exists!');
         };
 
         $result = registerUser($mysqli, $username, $passwordHash);
-    } catch (Exception $e) {
+    } catch (Throwable $e) {
         send_response(500, $e->getMessage());
     }
 

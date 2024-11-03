@@ -25,7 +25,7 @@ if (getRequestMethod() === 'GET') {
         $result = getCategories();
 
         send_response(200, 'Categories fetched succesfully', $result);
-    } catch (Exception $e) {
+    } catch (Throwable $e) {
         send_response(500, 'Failed to get categories.');
     }
 } else {

@@ -7,7 +7,7 @@ if (getRequestMethod() === 'POST') {
         session_start();
         session_unset();
         session_destroy();
-    } catch (Exception $e) {
+    } catch (Throwable $e) {
         send_response(500, $e->getMessage());
     }
 
