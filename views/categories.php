@@ -3,7 +3,7 @@
 <body>
     <?php include __DIR__ . '/components/category-template.html' ?>
     <?php include __DIR__ . '/modals/categories/create/create-modal.html' ?>
-    <?php include __DIR__ . '/components/navigation-panel.html' ?>
+    <?php include __DIR__ . '/common/navigation-panel.html' ?>
 
     <div class="page-content">
         <?php include __DIR__ . '/modals/categories/create/create-modal-button.html' ?>
@@ -13,4 +13,4 @@
 </body>
 
 <script src=views/components/category-template.js></script>
-<script src=views/components/navigation-panel.js></script>
+<script src=views/common/navigation-panel.js></script>

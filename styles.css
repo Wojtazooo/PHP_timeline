@@ -297,6 +297,21 @@ a.button:visited {
     color: #555;
 }
 
+#registerForm,
+#loginForm,
+#profil-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+#register-panel,
+#profil-panel,
+#login-panel {
+    h2 {
+        text-align: center;
+    }
+}
+
 @media print {
 
     #navigation-panel,

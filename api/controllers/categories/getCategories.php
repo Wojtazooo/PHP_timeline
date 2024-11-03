@@ -29,5 +29,5 @@ if (getRequestMethod() === 'GET') {
         send_response(500, 'Failed to get categories.');
     }
 } else {
-    send_response(500, 'Invalid http request.');
+    send_response(405, 'Method not allowed.');
 }

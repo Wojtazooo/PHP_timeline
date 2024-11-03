@@ -9,8 +9,14 @@ $(document).ready(function () {
 
 function showToastForApiError(xhr) {
     const httpStatusCode = xhr.status;
-    const responseObject = JSON.parse(xhr.responseText);
-    const message = responseObject.message;
+
+    let message;
+    try {
+        const responseObject = JSON.parse(xhr.responseText);
+        message = responseObject.message;
+    } catch (e) {
+        message = xhr.responseText;
+    }
 
     if (httpStatusCode >= 500) {
         showErrorToast(message);
@@ -41,6 +47,10 @@ function showErrorToast(message) {
 }
 
 function showToast(id, message) {
+    $('#success-toast').hide();
+    $('#warning-toast').hide();
+    $('#error-toast').hide();
+
     $(id).text(message);
-    $(id).fadeIn(200).delay(2000).fadeOut(200);
+    $(id).show().delay(2000).fadeOut(200);
 }

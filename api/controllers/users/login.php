@@ -41,5 +41,5 @@ if (getRequestMethod() === 'POST') {
         send_response(400, 'Failed to log in.');
     }
 } else {
-    send_response(500, 'Invalid http request.');
+    send_response(405, 'Method not allowed.');
 }

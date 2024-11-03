@@ -7,7 +7,7 @@
     <?php include __DIR__ . '/modals/events/create/create-modal.html' ?>
     <?php include __DIR__ . '/modals/events/delete/delete-modal.html' ?>
     <?php include __DIR__ . '/modals/events/details/details-modal.html' ?>
-    <?php include __DIR__ . '/components/navigation-panel.html' ?>
+    <?php include __DIR__ . '/common/navigation-panel.html' ?>
 
     <div class="page-content">
         <?php include  __DIR__ . '/modals/events/create/create-modal-button.html' ?>
@@ -23,7 +23,7 @@
 
 <!-- components scripts -->
 <script src=views/components/event-template.js></script>
-<script src=views/components/navigation-panel.js></script>
+<script src=views/common/navigation-panel.js></script>
 <!-- Modals scripts -->
 <script src=views/modals/events/details/details-modal.js></script>
 <script src=views/modals/events/delete/delete-modal.js></script>

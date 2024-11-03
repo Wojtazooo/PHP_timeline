@@ -26,6 +26,8 @@ function addEvent(string $title, string $start, string $end, string $description
 }
 
 if (getRequestMethod() === 'POST') {
+    auth_user();
+
     $title = $_POST['title'];
     $startDateString = $_POST['start'];
     $start = DateTime::createFromFormat('d-m-Y', $startDateString)->format('Y-m-d') . ' 00:00:00';
@@ -47,5 +49,5 @@ if (getRequestMethod() === 'POST') {
         send_response(500, 'Failed to create event.');
     }
 } else {
-    send_response(500, 'Invalid http request.');
+    send_response(405, 'Method not allowed.');
 }

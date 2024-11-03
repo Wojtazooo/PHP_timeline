@@ -1,8 +1,8 @@
 <?php include  __DIR__ . '/common/header.html' ?>
 
 <body>
-    <?php include __DIR__ . '/components/navigation-panel.html' ?>
+    <?php include __DIR__ . '/common/navigation-panel.html' ?>
     <h1>404 not found :( </h1>
 </body>
 
-<script src=views/components/navigation-panel.js></script>
+<script src=views/common/navigation-panel.js></script>

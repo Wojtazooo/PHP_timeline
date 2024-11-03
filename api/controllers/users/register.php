@@ -5,8 +5,6 @@ include_once '../../utilitites.php';
 
 function registerUser(mysqli $mysqli, string $username, string $password_hash)
 {
-
-
     $sqlQuery = $mysqli->prepare("INSERT INTO users (username, password_hash) VALUES (?, ?)");
 
     $sqlQuery->bind_param(
@@ -15,7 +13,10 @@ function registerUser(mysqli $mysqli, string $username, string $password_hash)
         $password_hash
     );
 
+
     if ($sqlQuery->execute()) {
+        $id = mysqli_insert_id($mysqli);
+        $_SESSION['user_id'] = $id;
         return $sqlQuery->insert_id;
     } else {
         return false;
@@ -37,6 +38,7 @@ function doesUserAlreadyExist(mysqli $mysqli, string $username)
 }
 
 if (getRequestMethod() === 'POST') {
+    session_start();
     $username = $_POST['username'];
     $password = $_POST['password'];
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
@@ -58,5 +60,5 @@ if (getRequestMethod() === 'POST') {
         send_response(500, 'Failed to register user.');
     }
 } else {
-    send_response(500, 'Invalid http request.');
+    send_response(405, 'Method not allowed.');
 }

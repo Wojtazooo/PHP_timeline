@@ -3,8 +3,6 @@
 include_once '../../utilitites.php';
 
 if (getRequestMethod() === 'POST') {
-    session_start();
-
     try {
         session_start();
         session_unset();
@@ -13,11 +11,7 @@ if (getRequestMethod() === 'POST') {
         send_response(500, $e->getMessage());
     }
 
-    if ($result) {
-        send_response(201, 'Logged out successfully.');
-    } else {
-        send_response(400, 'Failed to log out.');
-    }
+    send_response(200, 'Logged out successfully.');
 } else {
-    send_response(500, 'Invalid http request.');
+    send_response(405, 'Method not allowed.');
 }

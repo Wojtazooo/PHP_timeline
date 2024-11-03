@@ -22,6 +22,8 @@ function addCategory(string $name, string $color)
 }
 
 if (getRequestMethod() === 'POST') {
+    auth_user();
+
     $name = $_POST['name'];
     $color = $_POST['color'];
 
@@ -37,5 +39,5 @@ if (getRequestMethod() === 'POST') {
         send_response(500, 'Failed to create category.');
     }
 } else {
-    send_response(500, 'Invalid http request.');
+    send_response(405, 'Method not allowed.');
 }

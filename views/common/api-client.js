@@ -129,3 +129,36 @@ function apiCheckSesion(successResponseCallback, completeCallback) {
         }
     });
 }
+
+function apiLogOut(successResponseCallback, completeCallback) {
+    $.ajax({
+        url: 'api/controllers/users/logout.php',
+        type: 'POST',
+        success: function (response) {
+            successResponseCallback(response)
+        },
+        error: function (xhr, status, error) {
+            showToastForApiError(xhr);
+        },
+        complete: function () {
+            completeCallback();
+        }
+    });
+}
+
+function apiGetUser(userId, successResponseCallback, completeCallback) {
+    $.ajax({
+        url: 'api/controllers/users/getUser.php',
+        type: 'GET',
+        data: { userId },
+        success: function (response) {
+            successResponseCallback(response)
+        },
+        error: function (xhr, status, error) {
+            showToastForApiError(xhr);
+        },
+        complete: function () {
+            completeCallback();
+        }
+    });
+}
