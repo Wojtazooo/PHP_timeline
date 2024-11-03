@@ -38,7 +38,7 @@ if (getRequestMethod() === 'POST') {
     if ($result) {
         send_response(201, 'Logged in successfully.');
     } else {
-        send_response(400, 'Failed to log in.');
+        send_response(400, 'Invalid username or password.');
     }
 } else {
     send_response(405, 'Method not allowed.');
