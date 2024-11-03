@@ -12,7 +12,7 @@ function openDeleteModal(e) {
     var eventId = $(this).data('id');
     var title = $(this).data('title');
 
-    $('#deleteModalTitle').text(`Are you want to delete '${title}'?`);
+    $('#eventToRemoveName').text(title);
     $('#deleteModal').fadeIn();
     $('#deleteYesButton').off();
     $('#deleteYesButton').on('click', (_) => handleDeleteConfimationClicked(eventId))

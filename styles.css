@@ -215,6 +215,10 @@ a.button:visited {
     border-radius: 5px;
     text-wrap: wrap;
 
+    button {
+        min-width: 100px;
+    }
+
     img {
         max-width: 500px;
     }
@@ -267,11 +271,27 @@ a.button:visited {
     }
 }
 
+#deleteModal {
+    h2 {
+        font-weight: 100;
+    }
+
+    .confirmation-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+}
+
+#openCreateCategoryModal {
+    width: 50%;
+}
+
 .category-list {
     list-style-type: none;
     padding: 0;
-    max-width: 600px;
     margin: 0 auto;
+    width: 50%;
 }
 
 .category-item {
@@ -281,7 +301,17 @@ a.button:visited {
     border-left: 10px solid #000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+
+
+    .details {
+        display: flex;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 0.5rem;
+    }
 }
 
 .category-color {
@@ -312,10 +342,23 @@ a.button:visited {
     }
 }
 
+.fa-pen-to-square {
+    color: gold
+}
+
+.fa-trash {
+    color: red
+}
+
 @media print {
 
     #navigation-panel,
     button {
         display: none;
+    }
+
+    body {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
     }
 }
