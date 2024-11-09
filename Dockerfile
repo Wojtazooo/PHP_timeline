@@ -15,6 +15,9 @@ RUN echo '<Directory /var/www/html/src>\n\
     AllowOverride All\n\
     </Directory>' >> /etc/apache2/sites-available/000-default.conf
 
+# Install the mysqli extension
+RUN docker-php-ext-install mysqli
+
 # Expose the default HTTP port (port 80)
 EXPOSE 80
 
