@@ -1,0 +1,17 @@
+===== Google cloud login =====
+
+gcloud auth login
+gcloud config set project php-timeline
+gcloud auth configure-docker
+
+
+===== Build & push docker image to GCloud ====
+docker build -t gcr.io/php-timeline/php-timeline-app .
+docker push gcr.io/php-timeline/php-timeline-app  
+
+
+
+===== Build & run locally =====
+docker build -t php-timeline:1.0 .
+
+

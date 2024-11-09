@@ -23,6 +23,18 @@ a.button:visited {
     border: 1px solid;
 }
 
+button:hover,
+a.button:hover {
+    background-color: #a5a5a5
+}
+
+button:active,
+a.button:active {
+    background-color: #a5a5a5;
+    box-shadow: 0 2px #666;
+    transform: translateY(2px);
+}
+
 .toast {
     display: none;
     position: absolute;
