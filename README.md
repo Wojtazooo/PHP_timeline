@@ -1,5 +1,6 @@
 # Build
 ## Run locally using php
+In src/ directory run:
 ```
 php -S localhost:4220
 ```

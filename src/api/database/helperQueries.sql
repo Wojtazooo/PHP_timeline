@@ -1,5 +1,5 @@
-SELECT * FROM eventsdb.events
+DELETE * FROM events;
 
-INSERT INTO eventsdb.categories (name, color) VALUES ('xxx', 'red')
+DELETE * FROM categories;
 
-SELECT * FROM eventsdb.categories
+DELETE * FROM users;
