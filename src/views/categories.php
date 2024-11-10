@@ -8,6 +8,7 @@
 
     <div class="page-content">
         <?php include __DIR__ . '/modals/categories/create/create-modal-button.html' ?>
+        <div id="loadCategoriesSpinner" class="loader" style="display: none"></div>
         <ul id="category-list" class="category-list">
         </ul>
     </div>

@@ -16,6 +16,7 @@
         <div class="grid">
             <div id="timeline-column" class="timeline-col" style="grid-template-rows: repeat(50, 1rem)"></div>
             <div id="events-column" class="col" style="grid-template-rows: repeat(50, 1rem)">
+                <div id="loadEventsSpinner" class="loader" style="display: none"></div>
             </div>
         </div>
     </div>

@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $('#loadEventsSpinner').show()
     refreshEvents();
 });
 
@@ -6,7 +7,7 @@ function refreshEvents() {
     apiGetEvents((response) => {
         renderTimeline(response.result);
         renderEvents(response.result);
-    })
+    }, () => $('#loadEventsSpinner').hide())
 }
 
 events = [];

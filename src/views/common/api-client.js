@@ -1,5 +1,5 @@
 // -------------- Events ------------------
-function apiGetEvents(successResponseCallback) {
+function apiGetEvents(successResponseCallback, completeCallback) {
     $.ajax({
         url: 'api/controllers/events/getEvents.php',
         type: 'GET',
@@ -9,6 +9,9 @@ function apiGetEvents(successResponseCallback) {
         },
         error: function (xhr, status, error) {
             showToastForApiError(xhr);
+        },
+        complete: function () {
+            completeCallback();
         }
     });
 }
@@ -65,7 +68,7 @@ function apiUpdateEvent(data, successResponseCallback, completeCallback) {
 }
 
 // -------------- Categories ------------------
-function apiGetCategories(successResponseCallback) {
+function apiGetCategories(successResponseCallback, completeCallback) {
     $.ajax({
         url: 'api/controllers/categories/getCategories.php',
         type: 'GET',
@@ -75,6 +78,9 @@ function apiGetCategories(successResponseCallback) {
         },
         error: function (xhr, status, error) {
             showToastForApiError(xhr);
+        },
+        complete: function () {
+            completeCallback();
         }
     });
 }

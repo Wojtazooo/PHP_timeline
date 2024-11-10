@@ -1,11 +1,12 @@
 $(document).ready(function () {
+    $('#loadCategoriesSpinner').show()
     refreshCategories();
 });
 
 function refreshCategories() {
     apiGetCategories((response) => {
         renderCategories(response.result)
-    })
+    }, () => $('#loadCategoriesSpinner').hide())
 }
 
 function renderCategories(categories) {
@@ -17,8 +18,6 @@ function renderCategories(categories) {
 
         clone.querySelector('.category-name').textContent = category.name;
         clone.querySelector('.category-color').style = `background-color: ${category.color}`;
-
-
 
         const deleteButton = clone.querySelector('#delete-button')
         deleteButton.setAttribute('data-id', category.id);

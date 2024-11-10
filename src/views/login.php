@@ -3,6 +3,7 @@
 <body>
     <?php include __DIR__ . '/common/navigation-panel.html' ?>
 
+    <div id="profileSpinner" class="loader" style="display: none"></div>
     <div class="page-content">
         <div id="register-panel" style="display: none">
             <h2>Register</h2>
@@ -76,10 +77,13 @@
     });
 
     $('#log-out-button').on('click', function() {
+        $('#profileSpinner').show()
         apiLogOut((response) => {
             showToastForSuccessResponse(response);
             refreshPage();
-        }, () => {});
+        }, () => {
+            $('#profileSpinner').hide()
+        });
     })
 
     $('#go-to-register-button').on('click', function() {
@@ -103,10 +107,13 @@
             password
         };
 
+        $('#profileSpinner').show();
         apiRegister(data, (response) => {
             showToastForSuccessResponse(response);
             refreshPage();
-        }, () => {});
+        }, () => {
+            $('#profileSpinner').hide();
+        });
     });
 
     $('#loginForm').submit(function(e) {
@@ -119,10 +126,13 @@
             password
         };
 
+        $('#profileSpinner').show();
         apiLogin(data, (response) => {
             showToastForSuccessResponse(response);
             refreshPage();
-        }, () => {});
+        }, () => {
+            $('#profileSpinner').hide()
+        });
     });
 
     $('#changePasswordForm').submit(function(e) {
@@ -135,13 +145,17 @@
             return;
         }
 
+        $('#profileSpinner').show();
         apiChangePassword(password, (response) => {
             showToastForSuccessResponse(response);
             refreshPage();
-        }, () => {});
+        }, () => {
+            $('#profileSpinner').hide();
+        });
     });
 
     function refreshPage() {
+        $('#profileSpinner').show();
         $('#register-panel').hide();
         $('#registerForm')[0].reset();
         $('#login-panel').hide();
@@ -155,19 +169,23 @@
             const userId = responseObject.result.userId;
 
             if (loggedIn) {
-                $('#profil-panel').show();
-
+                $('#profileSpinner').show()
                 apiGetUser(userId, (getUserResponse) => {
                     const getUserResponseObject = JSON.parse(getUserResponse);
 
+                    $('#profil-panel').show();
                     $('#profile-username').text(getUserResponseObject.result.username)
                     $('#profile-account-created-at').text(getUserResponseObject.result.created_at)
+                }, () => {
+                    $('#profileSpinner').hide()
                 })
 
             } else {
                 $('#login-panel').show();
             }
             checkSession();
-        }, () => {});
+        }, () => {
+            $('#profileSpinner').hide();
+        });
     }
 </script>

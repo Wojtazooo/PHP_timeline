@@ -44,6 +44,7 @@ $('.close').on('click', function () {
 
 $('#editEventForm').on('submit', function (e) {
     e.preventDefault();
+    $('#updateEventModalSpinner').show();
 
     const title = $('#editEventTitle').val();
     const start = $('#editEventStart').val();
@@ -64,9 +65,10 @@ $('#editEventForm').on('submit', function (e) {
 
     apiUpdateEvent(data, (response) => {
         showToastForSuccessResponse(response);
+        // $('#updateEventModalSpinner').hide()
         $('#editEventDetailsModal').fadeOut();
         refreshEvents();
-    })
+    }, () => $('#updateEventModalSpinner').hide())
 });
 
 function openEditEventDetailsModal(e) {
