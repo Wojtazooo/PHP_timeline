@@ -7,7 +7,7 @@ function apiGetEvents(successResponseCallback, completeCallback) {
         success: function (response) {
             successResponseCallback(response);
         },
-        error: function (xhr, status, error) {
+        error: function (xhr, _, _) {
             showToastForApiError(xhr);
         },
         complete: function () {
@@ -24,7 +24,7 @@ function apiCreateEvent(data, successResponseCallback, completeCallback) {
         success: function (response) {
             successResponseCallback(response)
         },
-        error: function (xhr, status, error) {
+        error: function (xhr, _, _) {
             showToastForApiError(xhr);
         },
         complete: function () {
@@ -41,7 +41,7 @@ function apiDeleteEvent(eventId, successResponseCallback, completeCallback) {
         success: function (response) {
             successResponseCallback(response);
         },
-        error: function (xhr, status, error) {
+        error: function (xhr, _, _) {
             showToastForApiError(xhr);
         },
         complete: function () {
@@ -58,7 +58,7 @@ function apiUpdateEvent(data, successResponseCallback, completeCallback) {
         success: function (response) {
             successResponseCallback(response);
         },
-        error: function (xhr, status, error) {
+        error: function (xhr, _, _) {
             showToastForApiError(xhr);
         },
         complete: function () {
@@ -76,7 +76,7 @@ function apiGetCategories(successResponseCallback, completeCallback) {
         success: function (response) {
             successResponseCallback(response);
         },
-        error: function (xhr, status, error) {
+        error: function (xhr, _, _) {
             showToastForApiError(xhr);
         },
         complete: function () {
@@ -93,7 +93,7 @@ function apiCreateCategory(data, successResponseCallback, completeCallback) {
         success: function (response) {
             successResponseCallback(response)
         },
-        error: function (xhr, status, error) {
+        error: function (xhr, _, _) {
             showToastForApiError(xhr);
         },
         complete: function () {
@@ -110,7 +110,7 @@ function apiUpdateCategory(data, successResponseCallback, completeCallback) {
         success: function (response) {
             successResponseCallback(response)
         },
-        error: function (xhr, status, error) {
+        error: function (xhr, _, _) {
             showToastForApiError(xhr);
         },
         complete: function () {
@@ -127,7 +127,7 @@ function apiDeleteCategory(categoryId, successResponseCallback, completeCallback
         success: function (response) {
             successResponseCallback(response);
         },
-        error: function (xhr, status, error) {
+        error: function (xhr, _, _) {
             showToastForApiError(xhr);
         },
         complete: function () {
@@ -145,7 +145,7 @@ function apiLogin(data, successResponseCallback, completeCallback) {
         success: function (response) {
             successResponseCallback(response)
         },
-        error: function (xhr, status, error) {
+        error: function (xhr, _, _) {
             showToastForApiError(xhr);
         },
         complete: function () {
@@ -162,7 +162,7 @@ function apiRegister(data, successResponseCallback, completeCallback) {
         success: function (response) {
             successResponseCallback(response)
         },
-        error: function (xhr, status, error) {
+        error: function (xhr, _, _) {
             showToastForApiError(xhr);
         },
         complete: function () {
@@ -178,7 +178,7 @@ function apiCheckSesion(successResponseCallback, completeCallback) {
         success: function (response) {
             successResponseCallback(response)
         },
-        error: function (xhr, status, error) {
+        error: function (xhr, _, _) {
             showToastForApiError(xhr);
         },
         complete: function () {
@@ -194,7 +194,7 @@ function apiLogOut(successResponseCallback, completeCallback) {
         success: function (response) {
             successResponseCallback(response)
         },
-        error: function (xhr, status, error) {
+        error: function (xhr, _, _) {
             showToastForApiError(xhr);
         },
         complete: function () {
@@ -211,7 +211,7 @@ function apiGetUser(userId, successResponseCallback, completeCallback) {
         success: function (response) {
             successResponseCallback(response)
         },
-        error: function (xhr, status, error) {
+        error: function (xhr, _, _) {
             showToastForApiError(xhr);
         },
         complete: function () {
@@ -228,7 +228,7 @@ function apiChangePassword(password, successResponseCallback, completeCallback) 
         success: function (response) {
             successResponseCallback(response)
         },
-        error: function (xhr, status, error) {
+        error: function (xhr, _, _) {
             showToastForApiError(xhr);
         },
         complete: function () {
