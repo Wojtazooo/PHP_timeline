@@ -1,4 +1,8 @@
 # Build
+## Database connection
+Script to create database: src\api\database\createDatabaseScript.sql
+Databse connection configuration: src\api\database\DatabaseConnection.php
+
 ## Run locally using php
 In src/ directory run:
 ```
