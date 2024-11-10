@@ -21,6 +21,21 @@ function addCategory(string $name, string $color)
     }
 }
 
+function doesCategoryWithTheSameNameAlreadyExist(string $categoryName)
+{
+    $mysqli = connectToDatabase();
+    $sqlQuery = $mysqli->prepare("SELECT * FROM categories WHERE name = ?");
+    $sqlQuery->bind_param(
+        "s",
+        $categoryName
+    );
+    $sqlQuery->execute();
+    $res = $sqlQuery->get_result();
+    $exists = $res->num_rows == 1 ? true : false;
+
+    return $exists;
+}
+
 if (getRequestMethod() === 'POST') {
     auth_user();
 
@@ -28,6 +43,10 @@ if (getRequestMethod() === 'POST') {
     $color = $_POST['color'];
 
     try {
+        if (doesCategoryWithTheSameNameAlreadyExist($name)) {
+            send_response(400, 'Category with name \'' . $name . '\' already exists.');
+        }
+
         $result = addCategory($name, $color);
     } catch (Throwable $e) {
         send_response(500, $e->getMessage());
