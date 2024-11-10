@@ -339,7 +339,8 @@ a.button:active {
 
 #registerForm,
 #loginForm,
-#profil-panel {
+#profil-panel,
+#changePasswordForm {
     display: flex;
     flex-direction: column;
 }

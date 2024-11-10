@@ -2,21 +2,20 @@
 include_once '../../database/DatabaseConnection.php';
 include_once '../../utilitites.php';
 
-function registerUser(mysqli $mysqli, string $username, string $password_hash)
+function updateUserPassword(mysqli $mysqli, string $userId, string $password_hash)
 {
     $sqlQuery = $mysqli->prepare("INSERT INTO users (username, password_hash) VALUES (?, ?)");
+    $sqlQuery = $mysqli->prepare("UPDATE users SET password_hash = ? WHERE id = ?");
 
     $sqlQuery->bind_param(
         "ss",
-        $username,
-        $password_hash
+        $password_hash,
+        $userId
     );
 
 
     if ($sqlQuery->execute()) {
-        $id = mysqli_insert_id($mysqli);
-        $_SESSION['user_id'] = $id;
-        return $sqlQuery->insert_id;
+        return true;
     } else {
         return false;
     }
@@ -36,28 +35,25 @@ function doesUserAlreadyExist(mysqli $mysqli, string $username)
     return $exists;
 }
 
-if (getRequestMethod() === 'POST') {
-    session_start();
+if (getRequestMethod() === 'PUT') {
+    auth_user();
 
     try {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+        parse_str(file_get_contents("php://input"), $_PUT);
+        $password = $_PUT['password'];
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
         $mysqli = connectToDatabase();
+        $userId = $_SESSION['user_id'];
 
-        if (doesUserAlreadyExist($mysqli, $username)) {
-            send_response(400, 'User with given username already exists!');
-        };
-
-        $result = registerUser($mysqli, $username, $passwordHash);
+        $result = updateUserPassword($mysqli, $userId, $passwordHash);
     } catch (Throwable $e) {
         send_response(500, $e->getMessage());
     }
 
     if ($result) {
-        send_response(201, 'Registered successfully.');
+        send_response(200, 'Changed password successfully.');
     } else {
-        send_response(500, 'Failed to register user.');
+        send_response(500, 'Failed to change password.');
     }
 } else {
     send_response(405, 'Method not allowed.');

@@ -1,6 +1,5 @@
 <?php
 include_once '../../database/DatabaseConnection.php';
-// include_once '../../models/User.php';
 include_once '../../utilitites.php';
 
 function loginUser(string $username, string $password)

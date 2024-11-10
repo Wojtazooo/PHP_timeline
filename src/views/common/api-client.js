@@ -213,3 +213,20 @@ function apiGetUser(userId, successResponseCallback, completeCallback) {
         }
     });
 }
+
+function apiChangePassword(password, successResponseCallback, completeCallback) {
+    $.ajax({
+        url: 'api/controllers/users/changePassword.php',
+        type: 'PUT',
+        data: { password },
+        success: function (response) {
+            successResponseCallback(response)
+        },
+        error: function (xhr, status, error) {
+            showToastForApiError(xhr);
+        },
+        complete: function () {
+            completeCallback();
+        }
+    });
+}

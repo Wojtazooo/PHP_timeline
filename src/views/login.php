@@ -53,6 +53,18 @@
             <br>
 
             <button id="log-out-button">Log out</button>
+
+            <h2>Change password</h2>
+            <form id="changePasswordForm">
+                <label for="loginPassword">Password:</label>
+                <input type="password" id="changePassword" name="password" required>
+
+                <label for="loginPassword">Pass password again:</label>
+                <input type="password" id="changePassword2" name="password" required>
+                <br>
+
+                <button type="submit">Change password</button>
+            </form>
         </div>
     </div>
 </body>
@@ -113,12 +125,29 @@
         }, () => {});
     });
 
+    $('#changePasswordForm').submit(function(e) {
+        e.preventDefault();
+        const password = $('#changePassword').val();
+        const password2 = $('#changePassword2').val();
+
+        if (password !== password2) {
+            showErrorToast('Passwords must match!')
+            return;
+        }
+
+        apiChangePassword(password, (response) => {
+            showToastForSuccessResponse(response);
+            refreshPage();
+        }, () => {});
+    });
+
     function refreshPage() {
         $('#register-panel').hide();
         $('#registerForm')[0].reset();
         $('#login-panel').hide();
         $('#loginForm')[0].reset();
         $('#profil-panel').hide();
+        $('#changePasswordForm')[0].reset();
 
         apiCheckSesion((response) => {
             const responseObject = JSON.parse(response);
