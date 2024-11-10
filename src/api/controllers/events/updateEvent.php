@@ -78,6 +78,10 @@ if (getRequestMethod() === 'PUT') {
         $picture = $_PUT['picture'];
         $categoryId = (int)$_PUT['categoryId'];
 
+        if ($start > $end) {
+            send_response(400, 'Start must be less or equal to end of the event.');
+        }
+
         $mysqli = connectToDatabase();
 
         if (!doesEventExist($mysqli, $eventId)) {

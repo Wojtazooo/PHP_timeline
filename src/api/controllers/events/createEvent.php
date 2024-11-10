@@ -38,6 +38,10 @@ if (getRequestMethod() === 'POST') {
         $picture = $_POST['picture'];
         $categoryId = (int)$_POST['categoryId'];
 
+        if ($start > $end) {
+            send_response(400, 'Start must be less or equal to end of the event.');
+        }
+
         $result = addEvent($title, $start, $end, $description, $picture, $categoryId);
     } catch (Throwable $e) {
         send_response(500, $e->getMessage());
